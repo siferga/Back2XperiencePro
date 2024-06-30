@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: "web-app"
+  config:
+    import: "optional:configserver-b2x:http://localhost:8071/"
+  # will be used into the docker-compose to pass the healthcheck step
+
+#Configuration EUREKA CLIENT
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8070/eureka
+
+#Configuration de l'affichage des info
+info:
+  app:
+    name: "web-app"
+    description: " b2x app"
+    version: "1.0.0"
+
+# will be used into the docker-compose to pass the healthcheck step
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+server:
+  port: 8072

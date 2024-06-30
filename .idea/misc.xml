@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/eurekaserver-b2x/pom.xml" />
         <option value="$PROJECT_DIR$/configserverb2x/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaserverb2x/pom.xml" />
+        <option value="$PROJECT_DIR$/web-app/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

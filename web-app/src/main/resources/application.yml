@@ -1,6 +1,6 @@
 spring:
   application:
-    name: "web-app"
+    name: "webapp"
   config:
     import: "optional:configserver-b2x:http://localhost:8071/"
   # will be used into the docker-compose to pass the healthcheck step
@@ -18,7 +18,7 @@ eureka:
 #Configuration de l'affichage des info
 info:
   app:
-    name: "web-app"
+    name: "webapp"
     description: " b2x app"
     version: "1.0.0"
 

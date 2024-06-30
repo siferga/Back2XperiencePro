@@ -2,7 +2,7 @@ spring:
   application:
     name: "eurekaserver-b2x"
   config:
-    import: "optional:configserver-b2x:http://localhost:8071/"
+    import: "optional:configserver:http://localhost:8071/"
 # will be used into the docker-compose to pass the healthcheck step
 management:
   endpoints:

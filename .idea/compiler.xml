@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="webapp" />
         <module name="eurekaserver-b2x" />
         <module name="configserver-b2x" />
       </profile>
@@ -15,6 +14,8 @@
     <bytecodeTargetLevel>
       <module name="configserverb2x" target="17" />
       <module name="eurekaserverb2x" target="17" />
+      <module name="patient" target="17" />
+      <module name="webapp" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -23,7 +24,8 @@
       <module name="configserverb2x" options="-parameters" />
       <module name="eurekaserver-b2x" options="-parameters" />
       <module name="eurekaserverb2x" options="-parameters" />
-      <module name="webapp" options="-parameters" />
+      <module name="patient" options="-parameters" />
+      <module name="webapp" options="" />
     </option>
   </component>
 </project>

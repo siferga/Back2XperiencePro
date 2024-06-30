@@ -9,11 +9,14 @@
         <option value="$PROJECT_DIR$/configserverb2x/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaserverb2x/pom.xml" />
         <option value="$PROJECT_DIR$/web-app/pom.xml" />
+        <option value="$PROJECT_DIR$/collaborator/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/configserverb2x/pom.xml" />
+        <option value="$PROJECT_DIR$/patient/pom.xml" />
+        <option value="$PROJECT_DIR$/web-app/pom.xml" />
       </set>
     </option>
   </component>

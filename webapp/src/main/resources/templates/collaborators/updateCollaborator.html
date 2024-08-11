@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="/bootstrap.min.css" >
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <h2>Update Collaborator</h2>
+    </div>
+
+    <div class="row">
+        <form action="#" th:action="@{/updateCollaborator/{id}(id=${collaborator.id})}" th:object="${collaborator}" method="POST" class="form-horizontal" style="width: 100%">
+            <input type="hidden" name="_method" value="put"/>
+
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">Lastname</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{lastname}" id="lastname" placeholder="Lastname" class="col-4">
+                    <p class="text-danger" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">Firstname</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{firstname}" id="firstname" placeholder="Firstname" class="col-4">
+                    <p class="text-danger" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="birthday" class="col-sm-2 control-label">Birthday</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{birthday}" id="birthday" placeholder="birthday" class="col-4">
+                    <p class="text-danger" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{email}" id="email" placeholder="email" class="col-4">
+                    <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="col-sm-2 control-label">Phone</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{phone}" id="phone" placeholder="phone" class="col-4">
+                    <p class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender" class="col-sm-2 control-label">Gender</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{gender}" id="gender" placeholder="gender" class="col-4">
+                    <p class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{address}" id="address" placeholder="address" class="col-4">
+                    <p class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="hidden" th:field="*{id}">
+                    <a class="btn btn-danger btn-sm" href="/collaborator/collaboratorList">Cancel</a>
+                    <input class="btn btn-primary btn-sm" type="submit" value="Update List">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

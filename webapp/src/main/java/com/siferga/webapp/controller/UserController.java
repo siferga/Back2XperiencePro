@@ -1,20 +1,21 @@
 package com.siferga.webapp.controller;
 
+
 import ch.qos.logback.core.model.Model;
-import com.siferga.webapp.model.User;
 import com.siferga.webapp.service.CollaboratorServiceImpl;
 import com.siferga.webapp.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import com.siferga.webapp.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 @RequiredArgsConstructor
-public class UserController {
+public class UserController
+{
     private final UserServiceImpl userServiceImpl;
     private final CollaboratorServiceImpl collaboratorServiceImpl;
 
@@ -45,6 +46,11 @@ public class UserController {
         return new ModelAndView("/signup","user",new User());
     }
 
+//    @PostMapping("/addPatient")
+//    public ModelAndView addPatientForm(@ModelAttribute Patient patient) {
+//        patientServiceImpl.registerPatient(patient);
+//        return new ModelAndView("/patientList","patient",new Patient());
+//    }
 
 
 }

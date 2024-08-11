@@ -1,7 +1,5 @@
 package com.siferga.webapp.model;
-
-//il faut le pousser par feign
-//USER DANS LE MODEL
+import lombok.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +16,4 @@ public class User {
     public enum Role {
         ADMIN, USER, GUEST
     }
-
- }
+}

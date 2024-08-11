@@ -19,7 +19,7 @@ eureka:
 info:
   app:
     name: "webapp"
-    description: " b2x app"
+    description: "b2x app"
     version: "1.0.0"
 
 # will be used into the docker-compose to pass the healthcheck step
@@ -39,3 +39,4 @@ management:
         enabled: true
 server:
   port: 8072
+

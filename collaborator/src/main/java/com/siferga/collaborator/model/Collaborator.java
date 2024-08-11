@@ -1,19 +1,23 @@
-package com.siferga.webapp.model;
+package com.siferga.collaborator.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
-
-@Data
+@Entity
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Collaborator {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String lastname;
     private LocalDate birthday;
+    @Column(unique = true)
     private String email;
     private String phone;
     private String gender;

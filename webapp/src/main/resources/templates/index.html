@@ -79,14 +79,16 @@
                 <div class="col">
                     <div class="card mb-4 rounded-3 shadow-sm">
                         <div class="card-header py-3">
-                            <h4 class="my-0 fw-normal"></h4>
+                            <h4 class="my-0 fw-normal">Documents</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title"><small class="text-body-secondary fw-light"></small></h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li>Fully secured</li>
-                            </ul>
-                            <button type="button" class="w-100 btn btn-lg btn">Here</button>
+                            <div class="d-grid gap-2 mt-3 mb-4">
+                                <a th:href="@{/documentList}" class="btn btn-primary col-md-6 mx-auto">List</a>
+                                <a th:href="@{/addDocument}" class="btn btn-primary col-md-6 mx-auto">Add</a>
+                                <a th:href="@{/updateDocument}" class="btn btn-secondary col-md-6 mx-auto">Update</a>
+                                <a th:href="@{/deleteDocument}" class="btn btn-danger col-md-6 mx-auto">Delete</a>
+                            </div>
+                            <!--                            <button type="button" class="w-100 btn btn-lg btn">New consultation</button>-->
                         </div>
                     </div>
                 </div>

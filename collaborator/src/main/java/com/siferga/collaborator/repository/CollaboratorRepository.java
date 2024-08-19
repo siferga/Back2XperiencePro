@@ -1,6 +1,6 @@
 package com.siferga.collaborator.repository;
 
-import com.siferga.webapp.model.Collaborator;
+import com.siferga.collaborator.model.Collaborator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

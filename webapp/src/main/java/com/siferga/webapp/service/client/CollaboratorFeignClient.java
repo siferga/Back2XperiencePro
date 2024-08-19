@@ -23,7 +23,7 @@ public interface CollaboratorFeignClient {
     @GetMapping(value = "/api/getAll",consumes = "application/json")
     public ResponseEntity<List<Collaborator>> getAllCollaborators();
 
-    @GetMapping(value = "/api/findPatientById",consumes = "application/json")
+    @GetMapping(value = "/api/findCollaboratorById",consumes = "application/json")
     public ResponseEntity<Collaborator> findCollaboratorById(@RequestParam Long id);
 
     @PutMapping(value = "/api/updateCollaborator",consumes = "application/json")

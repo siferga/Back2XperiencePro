@@ -22,7 +22,7 @@ public class CollaboratorController {
 
     // Create a new patient
     @PostMapping("/createCollaborator")
-    public Collaborator createPatient(@RequestBody Collaborator collaborator) {
+    public Collaborator createCollaborator(@RequestBody Collaborator collaborator) {
         return collaboratorService.save(collaborator);
     }
 
@@ -34,9 +34,9 @@ public class CollaboratorController {
 
     // Get a single patient by ID
     @GetMapping("/findCollaboratorById")
-    public ResponseEntity<Collaborator> getPatientById(@RequestParam Long id) {
-        Optional<Collaborator> patient = collaboratorService.findById(id);
-        return patient.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<Collaborator> getCollaboratorById(@RequestParam Long id) {
+        Optional<Collaborator> collaborator = collaboratorService.findById(id);
+        return collaborator.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Update a collaborator
@@ -51,5 +51,10 @@ public class CollaboratorController {
         collaboratorService.deleteCollaborator(id);
     }
 
+    @GetMapping("/collaboratorDetails/{id}")
+    public String getCollaboratorDetails(@PathVariable("id") Long id, Collaborator collaborator) {
+        collaboratorService.findAll();
+        return "collaborators/collaboratorDetails";
+    }
 
 }

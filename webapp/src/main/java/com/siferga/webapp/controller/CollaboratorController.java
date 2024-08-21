@@ -91,4 +91,33 @@ public class CollaboratorController {
         return new ModelAndView("/collaborators/collaboratorList");
     }
 
+
+//    /*********************************  AFICHER LES DETAILS DES COLLABORATEURS  *********************************/
+//
+//    @GetMapping("/collaboratorDetails/{id}")
+//    public String getCollaboratorDetails(@PathVariable("id") Long id, Model model) {
+//        Collaborator collaborator = collaboratorServiceImpl.findById(id);
+//        if (collaborator == null) {
+//            // Handle the case where the collaborator does not exist
+//            return "redirect:/collaboratorList"; // Redirect to the list if the collaborator is not found
+//        }
+//        return "collaborators/collaboratorDetails";
+//    }
+//
+//    @PostMapping("/collaboratorDetails")
+//    public ModelAndView getCollaboratorDetails(@RequestParam("id") Long id) {
+//        Collaborator collaborator = collaboratorServiceImpl.findById(id);
+//        ModelAndView modelAndView = new ModelAndView("collaborators/collaboratorDetails");
+//        if (collaborator != null) {
+//            modelAndView.addObject("collaborator", collaborator);
+//        } else {
+//            // Si le collaborateur n'est pas trouvé, redirigez ou affichez un message d'erreur
+//            modelAndView.setViewName("redirect:/collaboratorList"); // Redirection vers la liste si l'ID est invalide
+//            modelAndView.addObject("error", "Collaborator not found");
+//        }
+//        return modelAndView;
+//    }
+
+
+
 }

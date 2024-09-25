@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="webapp" />
         <module name="eurekaserver-b2x" />
+        <module name="project-b2x" />
         <module name="configserver-b2x" />
         <module name="collaborator" />
       </profile>
@@ -28,6 +29,7 @@
       <module name="eurekaserver-b2x" options="-parameters" />
       <module name="eurekaserverb2x" options="-parameters" />
       <module name="patient" options="-parameters" />
+      <module name="project-b2x" options="-parameters" />
       <module name="webapp" options="-parameters" />
       <module name="webapp (1)" options="-parameters" />
     </option>

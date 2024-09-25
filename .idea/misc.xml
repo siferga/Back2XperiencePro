@@ -12,6 +12,9 @@
         <option value="$PROJECT_DIR$/collaborator/pom.xml" />
         <option value="$PROJECT_DIR$/webapp/webapp/pom.xml" />
         <option value="$PROJECT_DIR$/webapp/pom.xml" />
+        <option value="$PROJECT_DIR$/project/project/pom.xml" />
+        <option value="$PROJECT_DIR$/project/pom.xml" />
+        <option value="$PROJECT_DIR$/project-b2x/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -27,7 +27,7 @@ public interface CollaboratorFeignClient {
     public ResponseEntity<Collaborator> findCollaboratorById(@RequestParam Long id);
 
     @PutMapping(value = "/api/updateCollaborator",consumes = "application/json")
-    public String updateCollaborator(@RequestParam Long id,Collaborator patient);
+    public String updateCollaborator(@RequestParam Long id,Collaborator collaborator);
 
     @DeleteMapping(value = "/api/deleteCollaborator",consumes = "application/json")
     public void deleteCollaborator(@RequestParam Long id);

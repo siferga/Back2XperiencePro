@@ -13,7 +13,7 @@
 <body>
 <div class="container mt-5">
     <h2>Collaborator List</h2>
-    <a href="/addCollaborator" class="btn btn-primary mb-3">Add New Patient</a>
+    <a href="/addCollaborator" class="btn btn-primary mb-3">Add New Collaborator</a>
     <a href="/" class="btn btn-secondary mb-3">menu principal</a>
     <form action="#" th:action="@{/collaboratorList}" th:object="${collaborator}" method="post">
     <table class="table">
@@ -31,7 +31,7 @@
         </thead>
         <tbody>
         <tr th:each="collaborator : ${collaborators}">
-            <td th:text="${collaborator.id}"></td>
+<!--            <td th:text="${collaborator.id}"></td>-->
             <td th:text="${collaborator.firstname}"></td>
             <td th:text="${collaborator.lastname}"></td>
             <td th:text="${collaborator.birthday}"></td>

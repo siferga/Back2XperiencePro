@@ -71,6 +71,29 @@ services:
       SPRING_APPLICATION_NAME: "web-app"
     networks:
       - b2x-network
+
+  project-b2x:
+    image: siferga/project-b2x
+    container_name: project-b2x
+    ports:
+      - "9010:9010"
+    depends_on:
+      configserver-b2x:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    #    extends:
+    #      file: common-config.yml
+    #      service: microservice-configserver-config
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+    networks:
+      - b2x-network
+
   collaborator:
     image: siferga/collaborator
     container_name: collaborator

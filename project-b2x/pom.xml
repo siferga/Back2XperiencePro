@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.siferga</groupId>
-	<artifactId>project</artifactId>
+	<artifactId>project-b2x</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>project</name>
 	<description>project for Spring Boot</description>

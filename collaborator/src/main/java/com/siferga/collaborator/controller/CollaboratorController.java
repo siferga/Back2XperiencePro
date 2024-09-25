@@ -4,6 +4,7 @@ import com.siferga.collaborator.service.CollaboratorService;
 import com.siferga.collaborator.model.Collaborator;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,5 +57,15 @@ public class CollaboratorController {
         collaboratorService.findAll();
         return "collaborators/collaboratorDetails";
     }
+//@GetMapping("/collaboratorDetails/{id}")
+//public String getCollaboratorDetails(@PathVariable("id") Long id, Model model) {
+//    Optional<Collaborator> collaborator = collaboratorService.findById(id);
+//    if (collaborator.isPresent()) {
+//        model.addAttribute("collaborator", collaborator.get());
+//        return "collaborators/collaboratorDetails"; // chemin vers la vue Thymeleaf
+//    } else {
+//        return "redirect:/collaboratorList"; // redirection en cas d'absence
+//    }
+//}
 
 }

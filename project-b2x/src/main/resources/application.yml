@@ -21,6 +21,7 @@ spring:
       mode: always
   config:
     import: optional:configserver:https://localhost:8071/
+
 #Configuration EUREKA CLIENT
 eureka:
   instance:

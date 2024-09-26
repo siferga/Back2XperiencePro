@@ -70,8 +70,10 @@
             <div class="form-group">
                 <div class="col-sm-12">
                     <input type="hidden" th:field="*{id}">
-                    <a class="btn btn-danger btn-sm" href="/collaborator/collaboratorList">Cancel</a>
-                    <input class="btn btn-primary btn-sm" type="submit" value="Update List">
+<!--                    <a class="btn btn-danger btn-sm" href="/collaboratorList">Cancel</a>-->
+                    <a class="btn btn-danger btn-sm"  th:href="@{/collaboratorList}">Cancel</a>
+
+                    <input class="btn btn-primary btn-sm" type="submit" value="Update Collaborator">
                 </div>
             </div>
 

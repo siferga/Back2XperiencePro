@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>SignUp - Register Form</title>
+    <link href="/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<main>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="/images/knowledgeBom.png" alt="knowledge"/>
+                <h3>Welcome</h3>
+            </div>
+            <div class="col-md-9 register-right">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Create your account</h3>
+                    <div class="row register-form">
+                        <form th:action="@{/signup}" th:object="${collaborator}" method="POST">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" th:field="*{firstname}" class="form-control" placeholder="First Name *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" th:field="*{lastname}" class="form-control" placeholder="Last Name *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" th:field="*{birthday}" class="form-control" placeholder="Birthday *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" th:field="*{phone}" class="form-control" placeholder="Phone *" />
+                                </div>
+                                <div class="form-group">
+                                    <select th:field="*{gender}" class="form-control">
+                                        <option value="" disabled selected>Gender *</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" th:field="*{address}" class="form-control" placeholder="Address *" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" th:field="*{email}" class="form-control" placeholder="Your Email *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" th:field="*{password}" class="form-control" placeholder="Password *" />
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" required>
+                                    <label class="form-check-label">
+                                        I agree to the license terms.
+                                    </label>
+                                </div>
+                                <input type="submit" class="btnRegister" value="Sign Up" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</html>

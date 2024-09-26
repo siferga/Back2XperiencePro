@@ -1,6 +1,8 @@
 package com.siferga.webapp.controller;
 
-import ch.qos.logback.core.model.Model;
+//import ch.qos.logback.core.model.Model;
+import org.springframework.ui.Model;
+
 import com.siferga.webapp.service.CollaboratorServiceImpl;
 import com.siferga.webapp.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;

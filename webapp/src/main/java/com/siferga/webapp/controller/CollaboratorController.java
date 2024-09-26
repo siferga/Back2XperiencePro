@@ -43,9 +43,9 @@ public class CollaboratorController {
 
     @PostMapping("/collaboratorList")
     public ModelAndView showCollaboratorList(@ModelAttribute Collaborator collaborator) {
-        List<Collaborator> patients = collaboratorServiceImpl.findAllCollaborators();
+        List<Collaborator> collaborators = collaboratorServiceImpl.findAllCollaborators();
         ModelAndView modelAndView = new ModelAndView("collaborators/collaboratorList");
-        modelAndView.addObject("collaborators", collaborator);
+        modelAndView.addObject("collaborators", collaborators);
         modelAndView.addObject("collaborator", new Collaborator());
         return modelAndView;
     }
@@ -68,25 +68,25 @@ public class CollaboratorController {
 
     @GetMapping ("/updateCollaborator/{id}")
     public ModelAndView updateCollaborator(@PathVariable Long id) {
-        return new ModelAndView("/collaborators/updateCollaborator","collaborator",collaboratorServiceImpl.findById(id));
+        return new ModelAndView("collaborators/updateCollaborator","collaborator",collaboratorServiceImpl.findById(id));
     }
 
-    // Handle form submission for updating a specific patient
+    // Handle form submission for updating a specific collaborator
     @PostMapping("/updateCollaborator/{id}")
     public ModelAndView updateCollaborator(@PathVariable("id") Long id, @ModelAttribute("collaborator") Collaborator collaborator) {
         collaboratorServiceImpl.updateCollaborator(id, collaborator);
-        return new ModelAndView ("/collaborators/updateCollaborator");
+        return new ModelAndView ("collaborators/collaboratorDetails");
     }
 
     /*************************   DELETE A PATIENT   *****************************/
 
-    // Show form for deleting a specific patient
+    // Show form for deleting a specific collaborator
     @GetMapping("/deleteCollaborator/{id}")
     public ModelAndView showDeleteCollaboratorForm(@PathVariable("id") Long id) {
-        return new ModelAndView("/collaborators/deleteCollaborator","collaborator",collaboratorServiceImpl.findById(id));
+        return new ModelAndView("collaborators/deleteCollaborator","collaborator",collaboratorServiceImpl.findById(id));
     }
 
-    // Deleting a patient
+    // Deleting a collaborator
     @PostMapping("/deleteCollaborator/{id}")
     public ModelAndView deleteCollaborator(@PathVariable("id") Long id, @ModelAttribute("collaborator") Collaborator collaborator) {
         collaboratorServiceImpl.deleteCollaborator(id);
@@ -95,17 +95,18 @@ public class CollaboratorController {
 
 
 //    /*********************************  AFICHER LES DETAILS DES COLLABORATEURS  *********************************/
-//
-//    @GetMapping("/collaboratorDetails/{id}")
-//    public String getCollaboratorDetails(@PathVariable("id") Long id, Model model) {
-//        Collaborator collaborator = collaboratorServiceImpl.findById(id);
-//        if (collaborator == null) {
-//            // Handle the case where the collaborator does not exist
-//            return "redirect:/collaboratorList"; // Redirect to the list if the collaborator is not found
-//        }
-//        return "collaborators/collaboratorDetails";
-//    }
-//
+
+    @GetMapping("/collaboratorDetails/{id}")
+    public String viewCollaboratorDetails(@PathVariable("id") Long id, Model model) {
+        Collaborator collaborator = collaboratorServiceImpl.findById(id);
+        if (collaborator != null) {
+            model.addAttribute("collaborator", collaborator);
+            return "collaborators/collaboratorDetails";  // Retourne la vue des détails du collaborateur
+        }else {
+            return "redirect:/collaborators/collaboratorList";
+        }
+    }
+
 //    @PostMapping("/collaboratorDetails")
 //    public ModelAndView getCollaboratorDetails(@RequestParam("id") Long id) {
 //        Collaborator collaborator = collaboratorServiceImpl.findById(id);

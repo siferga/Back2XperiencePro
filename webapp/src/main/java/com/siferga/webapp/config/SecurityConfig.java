@@ -21,7 +21,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests((requests) -> requests.requestMatchers("/bootstrap.min.css","/style.css","/images/**","/login","/signup/**").permitAll() // Pages publiques
+        http.authorizeHttpRequests((requests) -> requests.requestMatchers("/bootstrap.min.css","/style.css","/images/**","/login").permitAll() // Pages publiques
 //                        .requestMatchers("/signup/**").hasRole("ADMIN")   // Restreindre l'accès à /signup aux administrateurs
 //                        .requestMatchers("/admin/**").hasRole("ADMIN")  // Restreindre l'accès à /admin/** aux administrateurs
                         .anyRequest().authenticated()) // Toutes les autres pages nécessitent une authentification

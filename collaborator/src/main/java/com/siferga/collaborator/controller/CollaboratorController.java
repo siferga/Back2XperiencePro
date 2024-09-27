@@ -21,19 +21,19 @@ public class CollaboratorController {
         this.collaboratorService = collaboratorService;
     }
 
-    // Create a new patient
+    // Create a new collaborator
     @PostMapping("/createCollaborator")
     public Collaborator createCollaborator(@RequestBody Collaborator collaborator) {
         return collaboratorService.save(collaborator);
     }
 
-    // Get a list with all patients
+    // Get a list with all collaborators
     @GetMapping("/getAll")
     public List<Collaborator> getAllCollaborators() {
         return collaboratorService.findAll();
     }
 
-    // Get a single patient by ID
+    // Get a single collaborator by ID
     @GetMapping("/findCollaboratorById")
     public ResponseEntity<Collaborator> getCollaboratorById(@RequestParam Long id) {
         Optional<Collaborator> collaborator = collaboratorService.findById(id);
@@ -46,7 +46,7 @@ public class CollaboratorController {
         return collaboratorService.updateCollaborator(id,collaborator);
     }
 
-    // Delete a patient
+    // Delete a collaborator
     @DeleteMapping("/deleteCollaborator")
     public void deleteCollaborator(@RequestParam(name = "id") Long id) {
         collaboratorService.deleteCollaborator(id);

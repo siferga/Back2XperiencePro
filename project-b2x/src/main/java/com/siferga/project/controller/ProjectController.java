@@ -1,7 +1,6 @@
 package com.siferga.project.controller;
 
 import com.siferga.project.model.Project;
-import com.siferga.project.repository.ProjectRepository;
 import com.siferga.project.service.ProjectService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -46,9 +45,15 @@ public class ProjectController {
     }
 
     // Delete a project
-    @DeleteMapping("/deleteproject")
+    @DeleteMapping("/deleteProject")
     public void deleteProject(@RequestParam(name = "id") Long id) {
         projectService.deleteProject(id);
+    }
+
+    @GetMapping("/projectDetails/{id}")
+    public String getProjectDetails(@PathVariable("id") Long id, Project project) {
+        projectService.findAll();
+        return "projects/projectDetails";
     }
 
 

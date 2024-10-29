@@ -1,5 +1,6 @@
 package com.siferga.webapp.controller;
 
+import com.siferga.webapp.model.Collaborator;
 import com.siferga.webapp.model.Project;
 import com.siferga.webapp.service.ProjectServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +57,7 @@ public class ProjectController {
     /***************************   FIND A PROJECT   ********************************/
 
     @PostMapping("/findProjectById")
-    public com.siferga.webapp.model.Project getProjectById(@RequestParam Long id) {
+    public Project getProjectById(@RequestParam Long id) {
         return this.projectServiceImpl.findById(id);
     }
 
@@ -87,5 +88,15 @@ public class ProjectController {
     }
 
     /*************************   PROJECT DETAILS   *****************************/
+    @GetMapping("/projectDetails/{id}")
+    public String viewProjectDetails(@PathVariable("id") Long id, Model model) {
+        Project project = projectServiceImpl.findById(id);
+        if (project != null) {
+            model.addAttribute("project", project);
+            return "projects/projectDetails";  // Retourne la vue des détails du collaborateur
+        }else {
+            return "redirect:/projects/projectList";
+        }
+    }
 
 }

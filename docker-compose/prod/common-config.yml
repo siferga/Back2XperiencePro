@@ -1,20 +1,20 @@
 services:
   network-deploy-service:
     networks:
-      - b2x-network
+      - healthcare
 
-  microservice-bd-config:
+  microservice-db-config:
     extends:
       service: network-deploy-service
     image: mysql
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      timeout: 20s
+      timeout: 10s
       retries: 10
       interval: 10s
       start_period: 10s
     environment:
-      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: root
 
   microservice-mongo-config:
     extends:
@@ -32,23 +32,20 @@ services:
     extends:
       service: microservice-base-config
     depends_on:
-      configserver-b2x:
+      configserver:
         condition: service_healthy
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_CONFIG_IMPORT: optional:configserver-b2x:http://configserver:8071/
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATASOURCE_PASSWORD: root
 
   microservice-eureka-config:
-    extends:
-      service: microservice-configserver-config
+#    extends:
+#      service: microservice-configserver-config
     depends_on:
-      eurekaserver-b2x:
+      eurekaserver:
         condition: service_healthy
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver-b2x:8070/eureka
-
-
-
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
 

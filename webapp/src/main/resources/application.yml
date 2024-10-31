@@ -3,14 +3,14 @@ server:
 spring:
   application:
     name: "webapp"
-  profiles:
-    active: "prod"
+#  profiles:
+#    active: "prod"
   mvc:
       format:
         date: yyyy-MM-dd
 
-  config:
-    import: "optional:configserver:http://localhost:8071/"
+#  config:
+#    import: "optional:configserver:http://localhost:8071/"
 
 
 

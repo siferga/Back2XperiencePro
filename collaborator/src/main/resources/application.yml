@@ -19,8 +19,8 @@ spring:
   sql:
     init:
       mode: always
-  config:
-    import: optional:configserver-b2x:https://localhost:8071/
+#  config:
+#    import: optional:configserver-b2x:https://localhost:8071/
 #Configuration EUREKA CLIENT
 eureka:
   instance:

@@ -8,28 +8,34 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="webapp" />
-        <module name="eurekaserver-b2x" />
+        <module name="eurekaserver" />
+        <module name="configserver" />
         <module name="project-b2x" />
-        <module name="configserver-b2x" />
         <module name="collaborator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="configserver-b2x" target="17" />
       <module name="configserverb2x" target="17" />
+      <module name="eurekaserver-b2x" target="17" />
       <module name="eurekaserverb2x" target="17" />
       <module name="patient" target="17" />
+      <module name="web-app" target="17" />
       <module name="webapp (1)" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="collaborator" options="-parameters" />
+      <module name="configserver" options="-parameters" />
       <module name="configserver-b2x" options="-parameters" />
       <module name="configserverb2x" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
       <module name="eurekaserver-b2x" options="-parameters" />
       <module name="eurekaserverb2x" options="-parameters" />
       <module name="patient" options="-parameters" />
       <module name="project-b2x" options="-parameters" />
+      <module name="web-app" options="-parameters" />
       <module name="webapp" options="-parameters" />
       <module name="webapp (1)" options="-parameters" />
     </option>

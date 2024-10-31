@@ -1,0 +1,113 @@
+version: "2.20.2"
+services:
+
+  collaboratordb:
+    container_name: collaboratordb
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_DATABASE: collaboratordb
+    extends:
+      file: common-config.yml
+      service: microservice-bd-config
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 1234
+    ports:
+      - 27018:27017
+    extends:
+      file: common-config.yml
+      service: microservice-mongo-config
+
+  configserver-b2x:
+    image: siferga/configserver-b2x:latest
+    container_name: configserver-b2x
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
+  eurekaserver-b2x:
+    image: siferga/eurekaserver-b2x:latest
+    container_name: eurekaserver-b2x
+    ports:
+      - "8070:8070"
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver-b2x"
+
+  collaborator:
+    image: siferga/collaborator:latest
+    container_name: collaborator
+    ports:
+      - "9000:9000"
+    environment:
+      SPRING_APPLICATION_NAME: "collaborator"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://collaboratordb:3306/collaboratordb"
+    depends_on:
+      collaboratordb:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+  project-b2x:
+    image: siferga/project-b2x:latest
+    container_name: project-b2x
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_APPLICATION_NAME: "project-b2x"
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+#  note:
+#    image: "jcb826/note:latest"
+#    container_name: note
+#    ports:
+#      - "9000:9000"
+#    environment:
+#      SPRING_APPLICATION_NAME: "note"
+#      SPRING_DATA_MONGODB_PORT: "27017"
+#      SPRING_DATA_MONGODB_HOST: "mongodb"
+#    extends:
+#      file: common-config.yml
+#      service: microservice-eureka-config
+
+  webapp:
+    image: siferga/webapp:latest
+    container_name: webapp
+    ports:
+      - "9010:9010"
+    environment:
+      SPRING_APPLICATION_NAME: "webapp"
+      SPRING_MVC_FORMAT_DATE: yyyy-MM-dd
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+networks:
+  b2x-network:
+    driver: bridge
+
+

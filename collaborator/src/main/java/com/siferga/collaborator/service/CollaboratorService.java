@@ -28,12 +28,31 @@ public class CollaboratorService {
         return collaboratorRepository.findById(id);
     }
 
+//    public String updateCollaborator(Long id, Collaborator collaborator) {
+//        collaboratorRepository.findById(id).get().getEmail().equals(collaborator.getEmail());
+//        collaboratorRepository.save(collaborator);
+//        return "Collaborator updated";
+//
+//    }
     public String updateCollaborator(Long id, Collaborator collaborator) {
-        collaboratorRepository.findById(id).get().getEmail().equals(collaborator.getEmail());
-        collaboratorRepository.save(collaborator);
-        return "Collaborator updated";
-
+        Optional<Collaborator> existingCollaborator = collaboratorRepository.findById(id);
+        if (existingCollaborator.isPresent()) {
+            // Update fields of the existing collaborator with the new collaborator data
+            Collaborator updatedCollaborator = existingCollaborator.get();
+            updatedCollaborator.setFirstname(collaborator.getFirstname());
+            updatedCollaborator.setLastname(collaborator.getLastname());
+            updatedCollaborator.setBirthday(collaborator.getBirthday());
+            updatedCollaborator.setEmail(collaborator.getEmail());
+            updatedCollaborator.setPhone(collaborator.getPhone());
+            updatedCollaborator.setGender(collaborator.getGender());
+            updatedCollaborator.setAddress(collaborator.getAddress());
+            collaboratorRepository.save(updatedCollaborator);
+            return "Collaborator updated";
+        } else {
+            return "Collaborator not found";
+        }
     }
+
     public void deleteCollaborator(Long id) {
         collaboratorRepository.deleteById(id);
     }

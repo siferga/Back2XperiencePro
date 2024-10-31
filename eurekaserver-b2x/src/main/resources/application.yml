@@ -9,11 +9,10 @@ management:
     web:
       exposure:
         include: "*"
-
   health:
-    readinessstate:
+    readiness-state:
       enabled: true
-    livenessstate:
+    liveness-state:
       enabled: true
 
   endpoint:

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Details</title>
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Project Details</h1>
+    <div th:action="@{/projectDetails}" th:object="${project}" method="post"></div>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">ID:</label>
+                <div class="col-sm-10">
+                    <span th:text="${project.id}"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Project Name:</label>
+                <div class="col-sm-10">
+                    <span th:text="${project.name}"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Description:</label>
+                <div class="col-sm-10">
+                    <span th:text="${project.description}"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Client:</label>
+                <div class="col-sm-10">
+                    <span th:text="${project.client}"></span>
+                </div>
+            </div>
+
+            <a th:href="@{/projectList}" class="btn btn-primary">Back to list</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

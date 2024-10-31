@@ -1,0 +1,126 @@
+/* Style global pour la barre latérale */
+.Sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #1f1f2f;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    padding-top: 20px;
+    transition: width 0.3s ease;
+}
+
+/* Style pour le logo */
+.Sidebar-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Sidebar-logo-img {
+    width: 80%;
+    max-width: 150px;
+}
+
+/* Style pour le menu de navigation */
+.Sidebar nav {
+    margin-top: 20px;
+}
+
+.Sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Sidebar-navigationLink {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    color: #c5c6d0;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.Sidebar-navigationLink:hover {
+    background-color: #2e2e3f;
+    color: #fff;
+}
+
+.Sidebar-navigationLink:focus {
+    outline: 2px solid #fff;
+}
+
+.sidebar-navigation-icon {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #c5c6d0;
+    transition: color 0.3s;
+}
+
+.Sidebar-navigationLink:hover .sidebar-navigation-icon {
+    color: #fff;
+}
+
+/* Style pour les sections et séparateurs */
+.Sidebar-settings {
+    margin-top: auto;
+    border-top: 1px solid #333344;
+    padding-top: 15px;
+}
+
+/* Style pour le menu burger */
+.Sidebar-burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.Sidebar-burger img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Style responsive pour afficher le menu burger sur mobile */
+@media (max-width: 768px) {
+    .Sidebar {
+        width: 80px;
+        padding-top: 15px;
+    }
+
+    .Sidebar-burger {
+        display: flex;
+    }
+
+    .Sidebar-logo-img {
+        width: 70%;
+    }
+
+    .Sidebar-navigationLink {
+        justify-content: center;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .sidebar-navigation-icon {
+        font-size: 20px;
+    }
+
+    .Sidebar-navigationLink a {
+        display: none;
+    }
+
+    .Sidebar.open {
+        width: 250px;
+    }
+
+    .Sidebar.open .Sidebar-navigationLink a {
+        display: inline;
+        margin-left: 10px;
+    }
+}

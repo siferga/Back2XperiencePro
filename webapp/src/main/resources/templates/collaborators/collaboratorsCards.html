@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/collaborator.css">
+</head>
+<body>
+<div class="collaborator-container">
+    <h1>Collaborateurs</h1>
+    <div class="collaborator-cards">
+        <!-- Boucle Thymeleaf pour afficher chaque collaborateur -->
+        <div class="collaborator-card" th:each="collaborator : ${collaborators}">
+            <img th:src="${collaborator.photoUrl}" alt="Photo de profil" class="profile-photo">
+            <div class="collaborator-info">
+                <h2 th:text="${collaborator.name}">Nom Collaborateur</h2>
+                <p th:text="${collaborator.role}">Rôle du Collaborateur</p>
+            </div>
+            <button class="details-button" th:onclick="'window.location.href=\'/collaborators/' + ${collaborator.id} + '/details\''">
+                Voir détails
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

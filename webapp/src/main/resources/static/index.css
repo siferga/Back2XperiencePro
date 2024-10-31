@@ -1,80 +1,260 @@
-/***************************** INDEX **************************************/
+/* Style de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-image: linear-gradient(180deg, var(--bs-secondary-bg), var(--bs-body-bg) 100px, var(--bs-body-bg));
-  background-image: url('');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  font-family: Arial, sans-serif;
+  background-color: #f7f9fc;
+  color: #3c4043;
 }
 
+/* Conteneur principal */
 .container {
-  max-width: 960px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.pricing-header {
-  max-width: 700px;
+/* Barre latérale */
+.sidebar {
+  background-color: #202124;
+  color: #e8eaed;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  padding: 20px;
 }
 
-/****************************** DASHBOARD *******************************/
-.bi {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
+.sidebar h2 {
+  font-size: 1.5rem;
+  color: #e8eaed;
+  margin-bottom: 20px;
 }
 
-/*
- * Sidebar
- */
-
-@media (min-width: 768px) {
-  .sidebar .offcanvas-lg {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 48px;
-  }
-  .navbar-search {
-    display: block;
-  }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
 }
 
-.sidebar .nav-link {
-  font-size: .875rem;
+.sidebar ul li {
+  padding: 10px 0;
+  font-size: 1rem;
+}
+
+.sidebar ul li a {
+  color: #e8eaed;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  color: #8ab4f8;
+}
+
+.sidebar .active {
+  color: #8ab4f8;
+}
+
+/* Contenu principal */
+.main-content {
+  margin-left: 270px;
+  padding: 20px;
+}
+
+/* En-tête */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #202124;
+}
+
+header .actions {
+  display: flex;
+  gap: 10px;
+}
+
+header .actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+header .actions .btn-primary {
+  background-color: #1a73e8;
+  color: #fff;
+}
+
+header .actions .btn-primary:hover {
+  background-color: #1664c0;
+}
+
+header .actions .btn-secondary {
+  background-color: #f1f3f4;
+  color: #3c4043;
+}
+
+header .actions .btn-secondary:hover {
+  background-color: #dadce0;
+}
+
+/* Section de tableau de bord */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: #202124;
+  margin-bottom: 10px;
+}
+
+.card .chart {
+  height: 150px;
+  background-color: #f1f3f4;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #202124;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+  background-color: #f1f3f4;
+  color: #202124;
   font-weight: 500;
 }
 
-.sidebar .nav-link.active {
-  color: #2470dc;
+.table tbody tr:hover {
+  background-color: #f9f9f9;
 }
 
-.sidebar-heading {
-  font-size: .75rem;
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #5f6368;
+  font-size: 0.9rem;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 40px;
 }
 
-/*
- * Navbar
- */
+/*!***************************** INDEX **************************************!*/
+/*body {*/
+/*  background-image: linear-gradient(180deg, var(--bs-secondary-bg), var(--bs-body-bg) 100px, var(--bs-body-bg));*/
+/*  background-image: url('');*/
+/*  background-size: cover;*/
+/*  background-repeat: no-repeat;*/
+/*  background-position: center;*/
+/*}*/
 
-.navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-}
+/*.container {*/
+/*  max-width: 960px;*/
+/*}*/
 
-.navbar .form-control {
-  padding: .75rem 1rem;
-}
+/*.pricing-header {*/
+/*  max-width: 700px;*/
+/*}*/
 
-.btn {
-  margin: auto;
-  display: block;
-  margin-top: 10%;
-  border: none;
-  border-radius: 1.5rem;
-  padding: 2%;
-  background: #0a4aa9;
-  color: #fff;
-  font-weight: 600;
-  width: 50%;
-  cursor: pointer;
-}
+/*!****************************** DASHBOARD *******************************!*/
+/*.bi {*/
+/*  display: inline-block;*/
+/*  width: 1rem;*/
+/*  height: 1rem;*/
+/*}*/
+
+/*!**/
+/* * Sidebar*/
+/* *!*/
+
+/*@media (min-width: 768px) {*/
+/*  .sidebar .offcanvas-lg {*/
+/*    position: -webkit-sticky;*/
+/*    position: sticky;*/
+/*    top: 48px;*/
+/*  }*/
+/*  .navbar-search {*/
+/*    display: block;*/
+/*  }*/
+/*}*/
+
+/*.sidebar .nav-link {*/
+/*  font-size: .875rem;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*.sidebar .nav-link.active {*/
+/*  color: #2470dc;*/
+/*}*/
+
+/*.sidebar-heading {*/
+/*  font-size: .75rem;*/
+/*}*/
+
+/*!**/
+/* * Navbar*/
+/* *!*/
+
+/*.navbar-brand {*/
+/*  padding-top: .75rem;*/
+/*  padding-bottom: .75rem;*/
+/*  background-color: rgba(0, 0, 0, .25);*/
+/*  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);*/
+/*}*/
+
+/*.navbar .form-control {*/
+/*  padding: .75rem 1rem;*/
+/*}*/
+
+/*.btn {*/
+/*  margin: auto;*/
+/*  display: block;*/
+/*  margin-top: 10%;*/
+/*  border: none;*/
+/*  border-radius: 1.5rem;*/
+/*  padding: 2%;*/
+/*  background: #0a4aa9;*/
+/*  color: #fff;*/
+/*  font-weight: 600;*/
+/*  width: 50%;*/
+/*  cursor: pointer;*/
+/*}*/
+
+

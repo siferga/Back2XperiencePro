@@ -9,7 +9,7 @@ spring:
   profiles:
     active: "prod"
   datasource:
-    url: jdbc:mysql://localhost:3308/collaboratorData?createDatabaseIfNotExist= true
+    url: jdbc:mysql://localhost:3308/collaboratordb?createDatabaseIfNotExist= true
     username: root
     password: 1234
   jpa:
@@ -20,7 +20,7 @@ spring:
     init:
       mode: always
   config:
-    import: optional:configserver:https://localhost:8071/
+    import: optional:configserver-b2x:https://localhost:8071/
 #Configuration EUREKA CLIENT
 eureka:
   instance:

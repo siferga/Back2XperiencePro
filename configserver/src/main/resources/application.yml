@@ -11,7 +11,7 @@ spring:
       server:
         # native:
           # search-locations: "classpath:/config"
-          # search-locations: "file:///Users//jcb826//Documents//config"
+          # search-locations: "file:///Users//siferga//Documents//config"
         git:
           uri: "https://github.com/siferga/back2Xperience-config-main.git"
           default-label: main

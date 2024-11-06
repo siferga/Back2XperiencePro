@@ -1,21 +1,18 @@
 package com.siferga.webapp.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String company;
+    private String contactName;
+    private String email;
+    private String phone;
 
-    private String contactInfo;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;  // Association avec la classe User
-
-    @OneToMany(mappedBy = "client")
-    private Set<Project> projects;  // Association avec les projets
 }

@@ -7,9 +7,6 @@ import java.util.Date;
 
 @Entity
 @Data
-@Getter
-@Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Project {

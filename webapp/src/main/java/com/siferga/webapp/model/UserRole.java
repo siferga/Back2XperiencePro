@@ -1,5 +1,14 @@
 package com.siferga.webapp.model;
 
-public enum UserRole {
-    ADMIN, USER
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserRole {
+   private Long id;
+   private String role;
+
 }

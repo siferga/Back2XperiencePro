@@ -6,6 +6,9 @@ import com.siferga.webapp.model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements IUserService {
@@ -15,7 +18,11 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User register(User user) {
-//        user.setRole(UserRole.USER);
+        List<String>authorities = new ArrayList<>();
+//        authorities.add("ADMIN");
+//        authorities.add("MANAGER");
+        authorities.add("COLLABORATOR");
+        user.setAuthorities(authorities);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return  collaboratorFeignClient.createUser(user);
     }

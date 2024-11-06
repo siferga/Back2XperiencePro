@@ -18,7 +18,7 @@ public class ProjectServiceImpl  implements IProjectService {
 
     @Override
     public Project registerProject(Project project) {
-        project.setName(project.getName());
+        project.setLabel(project.getLabel());
         project.setDescription(project.getDescription());
         project.setClient(project.getClient());
         return projectFeignClient.createProject(project);
@@ -46,7 +46,7 @@ public class ProjectServiceImpl  implements IProjectService {
         Project project = responseEntity.getBody();
 
         // Update project fields
-        project.setName(updatedProject.getName());
+        project.setLabel(updatedProject.getLabel());
         project.setDescription(updatedProject.getDescription());
         project.setClient(updatedProject.getClient());
 

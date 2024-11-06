@@ -3,7 +3,7 @@ spring:
     name: "eurekaserver"
   config:
     import: "optional:configserver:http://localhost:8071/"
-# will be used into the docker-compose to pass the healthcheck step
+
 management:
   endpoints:
     web:

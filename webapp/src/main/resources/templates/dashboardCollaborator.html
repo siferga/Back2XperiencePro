@@ -5,116 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/sidebar.css">
-    <link rel="stylesheet" href="/collaborator.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/collaborator.css">
 </head>
 
 <body>
 <main>
-    <div th:replace="~{partiels/sidebar}"></div>
-    <div class="container py-3">
-        <header>
-            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                    <span class="fs-4">Back2Xperience</span>
-                </a>
-                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Profile</a>
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:href="@{/collaboratorList}">Collaborators</a>
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:href="@{/contactForm}">Contact Us</a>
-                    <a class="py-2 link-body-emphasis text-decoration-none" th:href="@{/logOut}">Sign out</a>
-                </nav>
-            </div>
-            <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal text-body-emphasis">
-                    Hello, <span th:text="${firstname}"></span>
-                </h1>
-                <p class="fs-5 text-body-secondary">Welcome to your dashboard</p>
-            </div>
-        </header>
+    <div class="vertical-separator">
+        <div th:replace="~{partiels/sidebar}"></div>
+        <div class="container py-3">
+            <header>
+                <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                    <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                        <span class="fs-4">Back2Xperience</span>
+                    </a>
+                    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Profile</a>
+                        <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:href="@{/collaboratorList}">Collaborators</a>
+                        <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:href="@{/contactForm}">Contact Us</a>
+                        <a class="py-2 link-body-emphasis text-decoration-none" th:href="@{/logOut}">Sign out</a>
+                    </nav>
+                </div>
+                <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4 fw-normal text-body-emphasis">
+                        Hello, <span th:text="${firstname}"></span>
+                    </h1>
+                    <p class="fs-5 text-body-secondary">Welcome to your dashboard</p>
+                </div>
+            </header>
 
-        <section>
-            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                            <h4 class="my-0 fw-normal">Collaborators</h4>
-                        </div>
-                        <div class="d-grid gap-2 mt-3 mb-4">
-                            <a th:href="@{/collaboratorList}" class="btn btn-primary col-md-6 mx-auto">List</a>
+            <section>
+                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3">
+                                <h4 class="my-0 fw-normal">Collaborators</h4>
+                            </div>
+                            <div class="d-grid gap-2 mt-3 mb-4">
+                                <a th:href="@{/collaboratorList}" class="btn btn-primary col-md-6 mx-auto">List</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Projects Card -->
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                            <h4 class="my-0 fw-normal">Projects</h4>
+                    <!-- Projects Card -->
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3">
+                                <h4 class="my-0 fw-normal">Projects</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2 mt-3 mb-4">
+                                    <a th:href="@{/projectList}" class="btn btn-primary col-md-6 mx-auto">List</a>
+                                    <a th:href="@{/addProject}" class="btn btn-primary col-md-6 mx-auto">Add project</a>
+                                    <a th:href="@{/updateProject}" class="btn btn-secondary col-md-6 mx-auto">Update project</a>
+                                    <a th:href="@{/deleteProject}" class="btn btn-danger col-md-6 mx-auto">Delete project</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-2 mt-3 mb-4">
-                                <a th:href="@{/projectList}" class="btn btn-primary col-md-6 mx-auto">List</a>
-                                <a th:href="@{/addProject}" class="btn btn-primary col-md-6 mx-auto">Add project</a>
-                                <a th:href="@{/updateProject}" class="btn btn-secondary col-md-6 mx-auto">Update project</a>
-                                <a th:href="@{/deleteProject}" class="btn btn-danger col-md-6 mx-auto">Delete project</a>
+                    </div>
+
+                    <!-- Documents Card -->
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3">
+                                <h4 class="my-0 fw-normal">Documents</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2 mt-3 mb-4">
+                                    <a th:href="@{/documentList}" class="btn btn-primary col-md-6 mx-auto">List</a>
+                                    <a th:href="@{/addDocument}" class="btn btn-primary col-md-6 mx-auto">Add</a>
+                                    <a th:href="@{/updateDocument}" class="btn btn-secondary col-md-6 mx-auto">Update</a>
+                                    <a th:href="@{/deleteDocument}" class="btn btn-danger col-md-6 mx-auto">Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Documents Card -->
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                            <h4 class="my-0 fw-normal">Documents</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-2 mt-3 mb-4">
-                                <a th:href="@{/documentList}" class="btn btn-primary col-md-6 mx-auto">List</a>
-                                <a th:href="@{/addDocument}" class="btn btn-primary col-md-6 mx-auto">Add</a>
-                                <a th:href="@{/updateDocument}" class="btn btn-secondary col-md-6 mx-auto">Update</a>
-                                <a th:href="@{/deleteDocument}" class="btn btn-danger col-md-6 mx-auto">Delete</a>
-                            </div>
-                        </div>
+                <h2 class="display-6 text-center mb-4">Text</h2>
+            </section>
+
+            <footer class="pt-4 my-md-5 pt-md-5 border-top">
+                <div class="row">
+                    <div class="col-12 col-md">
+                        <img class="mb-2" src="../assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+                        <small class="d-block mb-3 text-body-secondary">&copy;2024</small>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>Cash transfer</h5>
+                        <ul class="list-unstyled text-small">
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">FAQ</a></li>
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Why using B2X?</a></li>
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>Need help?</h5>
+                        <ul class="list-unstyled text-small">
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resources</a></li>
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>About us</h5>
+                        <ul class="list-unstyled text-small">
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-
-            <h2 class="display-6 text-center mb-4">Text</h2>
-        </section>
-
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row">
-                <div class="col-12 col-md">
-                    <img class="mb-2" src="../assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
-                    <small class="d-block mb-3 text-body-secondary">&copy;2024</small>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Cash transfer</h5>
-                    <ul class="list-unstyled text-small">
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">FAQ</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Why using B2X?</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Need help?</h5>
-                    <ul class="list-unstyled text-small">
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resources</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Contact us</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>About us</h5>
-                    <ul class="list-unstyled text-small">
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

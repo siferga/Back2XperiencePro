@@ -55,21 +55,21 @@ services:
     environment:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
-#  patient:
-#    image: "siferga/patient:latest"
-#    container_name: patient-ms
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      SPRING_APPLICATION_NAME: "patient"
-#      SPRING_DATASOURCE_URL: "jdbc:mysql://patientdb:3306/patientdb"
-#    depends_on:
-#      patientdb:
-#        condition: service_healthy
-#    extends:
-#      file: common-config.yml
-#      service: microservice-eureka-config
-#
+  collaborator:
+    image: "siferga/collaborator:latest"
+    container_name: collaborator-ms
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: "collaborator"
+      SPRING_DATASOURCE_URL: "siferga:mysql://collaboratordb:3306/collaboratordb"
+    depends_on:
+      collaboratordb:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
 #  diabete-scoring:
 #    image: "jcb826/diabete-scoring:latest"
 #    container_name: diabete-scoring

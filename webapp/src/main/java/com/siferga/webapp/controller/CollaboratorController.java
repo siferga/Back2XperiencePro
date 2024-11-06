@@ -107,20 +107,4 @@ public class CollaboratorController {
         }
     }
 
-//    @PostMapping("/collaboratorDetails")
-//    public ModelAndView getCollaboratorDetails(@RequestParam("id") Long id) {
-//        Collaborator collaborator = collaboratorServiceImpl.findById(id);
-//        ModelAndView modelAndView = new ModelAndView("collaborators/collaboratorDetails");
-//        if (collaborator != null) {
-//            modelAndView.addObject("collaborator", collaborator);
-//        } else {
-//            // Si le collaborateur n'est pas trouvé, redirigez ou affichez un message d'erreur
-//            modelAndView.setViewName("redirect:/collaboratorList"); // Redirection vers la liste si l'ID est invalide
-//            modelAndView.addObject("error", "Collaborator not found");
-//        }
-//        return modelAndView;
-//    }
-
-
-
 }

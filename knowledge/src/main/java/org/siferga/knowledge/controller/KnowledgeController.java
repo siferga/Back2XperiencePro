@@ -15,8 +15,8 @@ public class KnowledgeController {
     private final KnowledgeService knowledgeService;
 
     @PostMapping("/addKnowledge")
-    public Knowledge addKnowledge(@RequestBody Knowledge Knowledge) {
-        return knowledgeService.addKnowledge(Knowledge);
+    public Knowledge addKnowledge(@RequestBody Knowledge knowledge) {
+        return knowledgeService.addKnowledge(knowledge);
     }
 
     @GetMapping("/knowledgeBy/{id}")

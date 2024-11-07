@@ -13,8 +13,6 @@ public class Knowledge {
     @Id
     private String id;
     private Long userId;
-    private Long collaboratorId;
-    private String collaboratorName;
     private LocalDate date;
-    private String Knowledge;
+    private String knowledge;
 }

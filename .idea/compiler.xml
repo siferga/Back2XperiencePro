@@ -11,6 +11,7 @@
         <module name="eurekaserver" />
         <module name="configserver" />
         <module name="project-b2x" />
+        <module name="Knowledge" />
         <module name="collaborator" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Knowledge" options="-parameters" />
       <module name="collaborator" options="-parameters" />
       <module name="configserver" options="-parameters" />
       <module name="configserver-b2x" options="-parameters" />

@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/project-b2x/pom.xml" />
         <option value="$PROJECT_DIR$/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaserver/pom.xml" />
+        <option value="$PROJECT_DIR$/knowledge/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

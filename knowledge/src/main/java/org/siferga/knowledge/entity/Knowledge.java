@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Setter @Getter @ToString
 @AllArgsConstructor @NoArgsConstructor
@@ -13,6 +14,19 @@ public class Knowledge {
     @Id
     private String id;
     private Long userId;
-    private LocalDate date;
-    private String knowledge;
+    private Long projectId;
+    private String fileName;
+    private String contentType;
+    private Date date;
+    private byte[] content;
+
+    public Knowledge(Long userId, Long projectId,String fileName, String contentType, byte[] content) {
+        this.userId = userId;
+        this.projectId = projectId;
+        this.fileName = fileName;
+        this.contentType = contentType;
+        this.date = new Date();
+        this.content = content;
+
+    }
 }

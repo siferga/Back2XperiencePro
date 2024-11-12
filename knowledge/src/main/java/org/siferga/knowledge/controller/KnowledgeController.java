@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/knowledge", produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(path = "/knowledge")
 @Validated
 public class KnowledgeController {
 
@@ -25,10 +25,10 @@ public class KnowledgeController {
 
     // Add a knowledge
     @PostMapping("/addKnowledge")
-    public ResponseEntity<Knowledge> addKnowledge(@RequestParam("file") MultipartFile file,
-                                                  @RequestParam("userId") Long userId,
-                                                  @RequestParam("projectId") Long projectId) throws Exception {
-        Knowledge knowledge = knowledgeService.saveKnowledge(file, userId, projectId);
+    public ResponseEntity<Knowledge> addKnowledge(@RequestParam("userId") Long userId,
+                                                  @RequestParam("projectId") Long projectId,
+                                                  @RequestParam("file") MultipartFile file) throws Exception {
+        Knowledge knowledge = knowledgeService.saveKnowledge(userId, projectId, file);
         return ResponseEntity.ok(knowledge);
     }
 

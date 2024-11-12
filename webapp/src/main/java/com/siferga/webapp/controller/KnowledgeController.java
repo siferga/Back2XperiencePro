@@ -2,7 +2,9 @@ package com.siferga.webapp.controller;
 
 import com.siferga.webapp.model.Knowledge;
 import com.siferga.webapp.model.Project;
+import com.siferga.webapp.service.CustomUserDetailsService;
 import com.siferga.webapp.service.KnowledgeServiceImpl;
+import com.siferga.webapp.service.ProjectServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,24 +20,28 @@ import java.util.List;
 public class KnowledgeController {
 
     private final KnowledgeServiceImpl knowledgeServiceImpl;
+    private final ProjectServiceImpl projectServiceImpl;
+    private final CustomUserDetailsService customUserDetailsService;
 
     /*************************   ADD KNOWLEDGE  *****************************/
 
     @GetMapping("/addKnowledge")
-    public ModelAndView showAddKnowledgeForm() {
-        return new ModelAndView("/knowledge/addKnowledge", "knowledge", new Knowledge());
+    public ModelAndView showAddKnowledgeForm(Model model) {
+        model.addAttribute("allProjects",projectServiceImpl.findAllProjects());
+        return new ModelAndView("knowledge/addKnowledge", "knowledge", new Knowledge());
     }
 
     @PostMapping("/addKnowledge")
-    public ModelAndView addNewKnowledge(@RequestParam("knowledge") MultipartFile knowledge,
-                                        @RequestParam("userId") Long userId,
+    public ModelAndView addNewKnowledge(@RequestParam("file") MultipartFile file,
                                         @RequestParam("projectId") Long projectId) {
         // Register the new knowledge
-        knowledgeServiceImpl.registerKnowledge(knowledge, userId, projectId);
-        return new ModelAndView("/knowledge/knowledgeList", "knowledge", new Knowledge());
+        Long userId = customUserDetailsService.actualUser().getId();
+        knowledgeServiceImpl.registerKnowledge(userId, projectId, file);
+        return new ModelAndView("knowledge/knowledgeList");
 
 //        // Redirect to the knowledge list or success page
 //        return new ModelAndView("redirect:/knowledgeList");
+
     }
 
     /*************************   KNOWLEDGE LIST   *****************************/
@@ -94,7 +100,7 @@ public class KnowledgeController {
             model.addAttribute("knowledge", knowledge);
             return "knowledge/knowledgeDetails";  // Retourne la vue des détails du collaborateur
         }else {
-            return "redirect:/knowledge/knowledgeList";
+            return "redirect:knowledge/knowledgeList";
         }
     }
 }

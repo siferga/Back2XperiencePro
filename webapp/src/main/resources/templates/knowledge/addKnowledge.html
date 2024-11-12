@@ -12,35 +12,25 @@
 <body>
 <div class="container mt-5">
     <h2>Add New Knowledge</h2>
-    <form th:action="@{/addKnowledge}" th:object="${knowledge}" method="POST" class="was-validated" novalidate>
-        <div class="form-group">
-            <label for="filename">File Name</label>
-            <input type="text" class="form-control" id="filename" th:field="*{fileName}" required>
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('filename')}" th:errors="*{fileName}">Please provide the project name.</div>
-        </div>
-
-        <div class="form-group">
-            <label for="contentType">Content Type</label>
-            <input type="text" class="form-control" id="contentType" th:field="*{contentType}" required>
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('contentType')}" th:errors="*{contentType}">Please select the type file.</div>
-        </div>
-
-        <div class="form-group">
-            <label for="content">File</label>
-            <input type="file" class="form-control" id="content" name="knowledge" required>
-<!--            <input type="file" class="form-control" id="content" th:field="*{content}" required>-->
-<!--            <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Please provide a description.</div>-->
-        </div>
-
+    <form th:action="@{/addKnowledge}" th:object="${knowledge}" method="POST" enctype="multipart/form-data" class="was-validated" novalidate>
 <!--        <div class="form-group">-->
-<!--            <label for="gender">Gender</label>-->
-<!--            <select class="form-control" id="gender" th:field="*{gender}" required>-->
-<!--                <option value="" disabled>Select gender</option>-->
-<!--                <option value="female">Female</option>-->
-<!--                <option value="male">Male</option>-->
-<!--            </select>-->
-<!--            &lt;!&ndash;            <div class="invalid-feedback" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Please select</div>&ndash;&gt;-->
+<!--            <label for="fileName">File Name</label>-->
+<!--            <input type="text" class="form-control" id="fileName" th:field="*{fileName}" required>-->
+<!--            <div class="invalid-feedback" th:if="${#fields.hasErrors('fileName')}" th:errors="*{fileName}">Please provide the project name.</div>-->
 <!--        </div>-->
+
+        <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" class="form-control" id="file" accept="application/pdf" th:field="*{file}" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('file')}" th:errors="*{file}">Please provide a description.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="projectId">Project</label>
+            <select class="form-control" id="projectId" name="projectId" required>
+                <option th:each="project : ${allProjects}" th:value="${project.id}" th:text="${project.label}"></option>
+            </select>
+        </div>
 
         <button type="submit" class="btn btn-primary">Add Knowledge to project</button>
         <a href="/knowledgeList" class="btn btn-secondary mb-3">Knowledge List</a>

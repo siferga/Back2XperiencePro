@@ -16,5 +16,5 @@ public class Knowledge {
     private String fileName;
     private String contentType;
     private Date date;
-    private byte[] content;
+    private byte[] file;
 }

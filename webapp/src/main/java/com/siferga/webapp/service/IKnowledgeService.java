@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IKnowledgeService {
 
-    ResponseEntity<String> registerKnowledge(MultipartFile knowledge, Long userId, Long projectId);
+    ResponseEntity<String> registerKnowledge(Long userId, Long projectId, MultipartFile file);
 
     List<Knowledge> findAllKnowledges();
 

@@ -17,16 +17,16 @@ public class KnowledgeServiceImpl implements IKnowledgeService {
     /*************************   REGISTER PROJECT   *****************************/
 
     @Override
-    public ResponseEntity<String> registerKnowledge(MultipartFile knowledge, Long userId, Long projectId) {
+    public ResponseEntity<String> registerKnowledge(Long userId, Long projectId, MultipartFile file) {
 
-        return knowledgeFeignClient.saveKnowledge(knowledge, userId, projectId);
+        return knowledgeFeignClient.saveKnowledge(userId, projectId, file);
     }
 
     /*************************   FIND ALL KNOWLEDGES   *****************************/
 
     @Override
     public List<Knowledge> findAllKnowledges() {
-        return knowledgeFeignClient.getAllKnowledges().getBody();
+        return knowledgeFeignClient.getAllKnowledge().getBody();
     }
 
     /*************************   FIND PROJECT BY ID   *****************************/

@@ -2,8 +2,10 @@ package com.siferga.webapp.service;
 
 import com.siferga.webapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,6 +35,12 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .password(user.getPassword())
                 .authorities(authorities)
                 .build();
+    }
+    public User actualUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String actualUserName = authentication.getName();
+        User user = userService.findByEmail(actualUserName);
+        return user;
     }
 
 }

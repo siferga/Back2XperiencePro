@@ -1,0 +1,50 @@
+<!-- mainContent.html -->
+<div class="MainContent page-mainContent">
+    <header class="MainContent-header header">
+        <div class="header-titleArea">
+            <h1 class="header-title">Projet: <span th:text="${projectName}">Nom du Projet</span></h1>
+            <nav class="header-breadcrumb">
+                <a href="/" class="header-breadcrumbLink">Home</a>
+                <a href="/projectsList" class="header-breadcrumbLink">Projets</a>
+                <a th:href="@{/projects/{id}(id=${projectId})}" class="header-breadcrumbLink" th:text="${projectName}">Nom du Projet</a>
+            </nav>
+        </div>
+        <div class="header-loginArea">
+            <div class="header-userLinks">
+                <a th:href="@{/logout}" class="header-userLink">Log out</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content-body">
+        <section class="collaborators">
+            <div class="collaborators-projet">
+                <h2 class="collaborators-projet-title">Collaborateurs du projet</h2>
+                <button class="collaborators-assignButton">Assigner un collaborateur</button>
+            </div>
+            <table class="collaborators-table">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" class="collaborators-checkbox"></th>
+                    <th>Lastname</th>
+                    <th>Firstname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Dissocier collaborateur</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="collaborator : ${collaborators}">
+                    <td><input type="checkbox" class="collaborators-checkbox" th:value="${collaborator.id}"></td>
+                    <td th:text="${collaborator.lastname}">Nom</td>
+                    <td th:text="${collaborator.firstname}">Prénom</td>
+                    <td th:text="${collaborator.email}">Email</td>
+                    <td th:text="${collaborator.phone}">Téléphone</td>
+                    <td><button th:onclick="'dissociateCollaborator(' + ${collaborator.id} + ')'">Dissocier</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="collaborators-dissociateButton">Dissocier la sélection</button>
+        </section>
+    </main>
+</div>

@@ -1,5 +1,9 @@
 server:
   port: 9010
+  servlet:
+    session:
+      persistent: false
+
 spring:
   application:
     name: "webapp"

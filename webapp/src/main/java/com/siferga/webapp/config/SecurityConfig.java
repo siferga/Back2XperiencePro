@@ -22,6 +22,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests((requests) -> requests.requestMatchers("/css/bootstrap.min.css","/css/style.css","/images/**","/signup","/login").permitAll()
+                        // Pages accessibles uniquement aux administrateurs
+                        .requestMatchers("/admin/**").hasRole("ADMINISTRATOR")
+
+                        // Pages accessibles aux chefs de projet et aux administrateurs
+                        .requestMatchers("/project/**").hasAnyRole("PROJECT_MANAGER", "ADMINISTRATOR")
+
+                        // Pages accessibles aux collaborateurs, chefs de projet et administrateurs
+                        .requestMatchers("/collaborator/**").hasAnyRole("COLLABORATOR", "PROJECT_MANAGER", "ADMINISTRATOR")
+
+                        // Tout autre accès nécessite une authentification
                         .anyRequest().authenticated()) // Other pages need authentification
                 .formLogin(form -> form.loginPage("/login")
                         .usernameParameter("email")

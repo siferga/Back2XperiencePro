@@ -1,6 +1,6 @@
 package com.siferga.webapp.controller;
 
-import ch.qos.logback.core.model.Model;
+import com.siferga.webapp.model.Collaborator;
 import com.siferga.webapp.service.CollaboratorServiceImpl;
 import com.siferga.webapp.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -8,10 +8,13 @@ import com.siferga.webapp.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,7 +37,9 @@ public class UserController
 
     @GetMapping("/")
     public ModelAndView home(Model model) {
-        return new ModelAndView("dashboardCollaborator");
+      List<Collaborator> collaborators= (collaboratorServiceImpl.findAllCollaborators());
+      model.addAttribute("collaborators", collaborators);
+        return new ModelAndView("dashboardUser");
     }
     @GetMapping("/login")
     public ModelAndView getLoginPage() {

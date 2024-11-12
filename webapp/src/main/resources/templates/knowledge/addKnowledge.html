@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Add Knowledge</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="/style.css">-->
+
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Add New Knowledge</h2>
+    <form th:action="@{/addKnowledge}" th:object="${knowledge}" method="POST" class="was-validated" novalidate>
+        <div class="form-group">
+            <label for="filename">File Name</label>
+            <input type="text" class="form-control" id="filename" th:field="*{fileName}" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('filename')}" th:errors="*{fileName}">Please provide the project name.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="contentType">Content Type</label>
+            <input type="text" class="form-control" id="contentType" th:field="*{contentType}" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('contentType')}" th:errors="*{contentType}">Please select the type file.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="content">File</label>
+            <input type="file" class="form-control" id="content" name="knowledge" required>
+<!--            <input type="file" class="form-control" id="content" th:field="*{content}" required>-->
+<!--            <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Please provide a description.</div>-->
+        </div>
+
+<!--        <div class="form-group">-->
+<!--            <label for="gender">Gender</label>-->
+<!--            <select class="form-control" id="gender" th:field="*{gender}" required>-->
+<!--                <option value="" disabled>Select gender</option>-->
+<!--                <option value="female">Female</option>-->
+<!--                <option value="male">Male</option>-->
+<!--            </select>-->
+<!--            &lt;!&ndash;            <div class="invalid-feedback" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Please select</div>&ndash;&gt;-->
+<!--        </div>-->
+
+        <button type="submit" class="btn btn-primary">Add Knowledge to project</button>
+        <a href="/knowledgeList" class="btn btn-secondary mb-3">Knowledge List</a>
+<!--        <a th:href="@{knowledgeList}" class="btn btn-secondary mb-3">Knowledge List<</a>-->
+    </form>
+</div>
+
+</body>
+</html>

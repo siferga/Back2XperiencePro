@@ -12,24 +12,28 @@
 <body>
 <div class="container mt-5">
     <h2>Add New Project</h2>
-    <form th:action="@{/addProject.html}" th:object="${project}" method="POST" class="was-validated" novalidate>
+    <form th:action="@{/addProject}" th:object="${project}" method="POST" class="was-validated" novalidate>
+
+        <div class="form-group">
+            <label for="project reference">Project Reference</label>
+            <input type="text" class="form-control" id="project reference" th:field="*{ref}" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('ref')}" th:errors="*{ref}">Please provide the project reference.</div>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label for="client">Client</label>-->
+<!--            <input type="text" class="form-control" id="client" th:field="*{client}" required>-->
+<!--            <div class="invalid-feedback" th:if="${#fields.hasErrors('client')}" th:errors="*{client}">Please provide the client name.</div>-->
+<!--        </div>-->
         <div class="form-group">
             <label for="project name">Project Name</label>
             <input type="text" class="form-control" id="project name" th:field="*{label}" required>
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('projectname')}" th:errors="*{label}">Please provide the project name.</div>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('label')}" th:errors="*{label}">Please provide the project name.</div>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
             <input type="text" class="form-control" id="description" th:field="*{description}" required>
             <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Please provide a description.</div>
         </div>
-
-        <div class="form-group">
-            <label for="client">Client</label>
-            <input type="text" class="form-control" id="client" th:field="*{client}" required>
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('client')}" th:errors="*{client}">Please provide the client name.</div>
-        </div>
-
 <!--        <div class="form-group">-->
 <!--            <label for="gender">Gender</label>-->
 <!--            <select class="form-control" id="gender" th:field="*{gender}" required>-->
@@ -41,7 +45,8 @@
 <!--        </div>-->
 
         <button type="submit" class="btn btn-primary">Add Project</button>
-        <a href="/projectList" class="btn btn-secondary mb-3">Projects List</a>
+<!--        <a href="/projectList" class="btn btn-secondary mb-3">Projects List</a>-->
+        <a th:href="@{/projectList}" class="btn btn-secondary mb-3">Projects List</a>
     </form>
 </div>
 

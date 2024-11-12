@@ -52,6 +52,12 @@ public class KnowledgeService {
 
     public void deleteKnowledge(String id) {
         Knowledge knowledge = knowledgeRepository.findById(id).orElse(null);
+        assert knowledge != null;
         knowledgeRepository.delete(knowledge);
     }
+
+    public List<Knowledge> findAllKnowledge() {
+        return knowledgeRepository.findAll();
+    }
+
 }

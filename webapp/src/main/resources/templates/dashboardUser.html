@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Single</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- chart.js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/chart-config.js"></script>
+</head>
+<body>
+<div class="Page">
+    <!-- Sidebar -->
+    <aside class="Sidebar">
+        <div class="Sidebar-burger">
+            <img src="/images/burger.png" alt="Open menu" class="Sidebar-burgerOpen">
+            <img src="/images/close.png" alt="Close menu" class="Sidebar-burgerClose">
+        </div>
+        <div class="Sidebar-logo">
+            <img src="/images/Logo.png" alt="Logo" class="Sidebar-logo-img">
+        </div>
+        <form action="" class="Sidebar-searchForm">
+            <label for="searchInput" class="Sidebar-searchLabel">Search</label>
+            <input type="text" id="searchInput" class="Sidebar-searchInput">
+        </form>
+        <nav class="Sidebar-navigation Sidebar-navigation-main">
+            <a href="dashboardUser.html" class="Sidebar-navigationLink">
+                <i class="fas fa-tachometer-alt sidebar-navigation-icon"></i>Dashboard
+            </a>
+            <a href="/projectList" class="Sidebar-navigationLink">
+                <i class="fas fa-folder-open sidebar-navigation-icon"></i>Projects
+            </a>
+            <a href="/collaboratorList" class="Sidebar-navigationLink">
+                <i class="fas fa-users sidebar-navigation-icon"></i>Collaborators
+            </a>
+            <a href="/knowledgeList/" class="Sidebar-navigationLink">
+                <i class="fas fa-lightbulb sidebar-navigation-icon"></i>Knowledge
+            </a>
+            <a href="/addKnowledge" class="Sidebar-navigationLink">
+                <i class="fas fa-user-tie sidebar-navigation-icon"></i>Clients
+            </a>
+            <a href="/addKnowledge" class="Sidebar-navigationLink">
+                <i class="fas fa-user-tie sidebar-navigation-icon"></i>Clients
+            </a>
+        </nav>
+        <nav class="Sidebar-navigation Sidebar-settings">
+            <a href="#" class="Sidebar-navigationLink">
+                <i class="fas fa-headset sidebar-navigation-icon"></i>Support
+            </a>
+            <a href="#" class="Sidebar-navigationLink">
+                <i class="fas fa-cogs sidebar-navigation-icon"></i>Settings
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="MainContent page-mainContent">
+        <header class="MainContent-header header">
+            <div class="header-titleArea">
+                <!-- Titre du projet avec le nom dynamique -->
+                <h1 class="header-title">Projet: <span th:text="${projectName}">Nom du Projet</span></h1>
+
+                <!-- Fil d'Ariane (Breadcrumb) avec des liens dynamiques -->
+                <nav class="header-breadcrumb">
+                    <a href="/" class="header-breadcrumbLink">Home</a>
+                    <a href="/projectsList" class="header-breadcrumbLink">Projets</a>
+                    <a th:href="@{/projects/{id}(id=${projectId})}" class="header-breadcrumbLink" th:text="${projectName}">Nom du Projet</a>
+                </nav>
+            </div>
+            <div class="header-loginArea">
+<!--                &lt;!&ndash; Avatar de l'utilisateur, avec URL dynamique si disponible &ndash;&gt;-->
+<!--                <img th:src="${userAvatarUrl != null ? userAvatarUrl : '/images/default-avatar.png'}"-->
+<!--                     alt="User Avatar" class="header-userAvatar">-->
+
+                <!-- Liens utilisateur -->
+                <div class="header-userLinks">
+                    <a th:href="@{/logout}" class="header-userLink">Log out</a>
+                </div>
+            </div>
+
+        </header>
+
+        <main class="main-content-body">
+<!--            &lt;!&ndash; Section des statistiques &ndash;&gt;-->
+<!--            <section class="statistics">-->
+<!--                <h2 class="statistics-title">Collaborateurs by department</h2>-->
+<!--                <div class="statistics-diagram">-->
+<!--                    <canvas id="projectCollaborators"></canvas>-->
+<!--                </div>-->
+<!--            </section>-->
+
+            <!-- Collaborators Section -->
+            <section class="collaborators">
+                <div class="collaborators-projet">
+                    <h2 class="collaborators-projet-title">Collaborateurs du projet</h2>
+                    <button class="collaborators-assignButton">Assigner un collaborateur</button>
+                </div>
+                <table class="collaborators-table">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" class="collaborators-checkbox"></th>
+                        <th>Lastname</th>
+                        <th>Firstname</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Dissocier collaborateur</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Utilisation de Thymeleaf pour parcourir la liste des collaborateurs -->
+                    <tr th:each="collaborator : ${collaborators}">
+                        <td><input type="checkbox" class="collaborators-checkbox" th:value="${collaborator.id}"></td>
+                        <td th:text="${collaborator.lastname}">Nom</td>
+                        <td th:text="${collaborator.firstname}">Prénom</td>
+                        <td th:text="${collaborator.email}">Email</td>
+                        <td th:text="${collaborator.phone}">Téléphone</td>
+                        <td><button th:onclick="'dissociateCollaborator(' + ${collaborator.id} + ')'">Dissocier</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="collaborators-dissociateButton">Dissocier la sélection</button>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script>
+    // JavaScript pour le menu burger
+    document.querySelector('.Sidebar-burgerOpen').addEventListener('click', function () {
+        document.querySelector('.Sidebar').classList.add('open');
+    });
+
+    document.querySelector('.Sidebar-burgerClose').addEventListener('click', function () {
+        document.querySelector('.Sidebar').classList.remove('open');
+    });
+
+
+
+        function dissociateCollaborator(collaboratorId) {
+        // Affiche l'ID du collaborateur (pour vérifier si la fonction est appelée correctement)
+        console.log("Dissociating collaborator with ID: " + collaboratorId);
+
+        // Exemple de code pour envoyer la requête au backend
+        fetch(`/dissociateCollaborator/${collaboratorId}`, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+    }
+    })
+        .then(response => {
+        if (response.ok) {
+        // Actualiser la page ou mettre à jour l'affichage si nécessaire
+        console.log("Collaborateur dissocié avec succès !");
+    } else {
+        console.error("Échec de la dissociation du collaborateur.");
+    }
+    })
+        .catch(error => console.error("Erreur :", error));
+    }
+
+
+</script>
+</body>
+</html>
+

@@ -62,7 +62,10 @@ services:
       - "8080:8080"
     environment:
       SPRING_APPLICATION_NAME: "collaborator"
-      SPRING_DATASOURCE_URL: "siferga:mysql://collaboratordb:3306/collaboratordb"
+#      SPRING_DATASOURCE_URL: "siferga:mysql://collaboratordb:3306/collaboratordb"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://collaboratordb:3306/collaboratordb"
+#      SPRING_DATASOURCE_URL: "jdbc:mysql://localhost:3306/collaboratordb"
+
     depends_on:
       collaboratordb:
         condition: service_healthy
@@ -108,5 +111,5 @@ services:
       service: microservice-eureka-config
 
 networks:
-  healthcare:
+  b2xperience:
     driver: "bridge"

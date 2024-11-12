@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Delete Knowledge</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="row">
+    <h2>Delete Knowledge</h2>
+  </div>
+
+  <div class="row">
+    <form th:action="@{/deleteKnowledge/{id}(id=${knowledge.id})}" method="post" class="form-horizontal" style="width: 100%">
+      <input type="hidden" name="_method" value="delete"/>
+
+      <div class="form-group">
+        <label for="filename" class="col-sm-2 control-label">File Name </label>
+        <div class="col-sm-10">
+          <input type="text" id="filename" placeholder="File Name" class="col-4 form-control" th:value="${knowledge.filename}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contentType" class="col-sm-2 control-label">Content Type</label>
+        <div class="col-sm-10">
+          <input type="text" id="contentType" placeholder="Content Type" class="col-4 form-control" th:value="${knowledge.contentType}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="content" class="col-sm-2 control-label">Client</label>
+        <div class="col-sm-10">
+          <input type="file" id="content" placeholder="content" class="col-4 form-control" th:value="${knowledge.content}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <p>Are you sure you want to delete this knowledge?</p>
+          <input type="hidden" th:name="id" th:value="${knowledge.id}"/>
+<!--          <a class="btn btn-danger btn-sm" href="knowledge/knowledgeList">Cancel</a>-->
+          <a th:href="@{/knowledge/knowledgeList}" class="btn btn-secondary btn-sm">Cancel</a>
+          <input class="btn btn-primary btn-sm" type="submit" value="Delete knowledge">
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>

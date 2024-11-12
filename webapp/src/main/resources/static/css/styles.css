@@ -1,0 +1,304 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+.Page {
+  display: flex;
+  height: 100vh;
+}
+
+.Sidebar {
+  width: 250px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+}
+.Sidebar-burger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Sidebar-burgerOpen, .Sidebar-burgerClose {
+  display: none;
+}
+.Sidebar-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.Sidebar-logo img {
+  max-width: 100%;
+}
+.Sidebar-searchForm {
+  margin-bottom: 20px;
+}
+.Sidebar-searchFormInput {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+.Sidebar-navigation {
+  margin-bottom: 20px;
+}
+.Sidebar-navigationLink {
+  display: block;
+  padding: 10px 0;
+  color: #fff;
+  text-decoration: none;
+}
+.Sidebar-navigationLink:hover {
+  background-color: #217dbb;
+}
+.Sidebar-navigationLink .sidebar-navigation-icon {
+  margin-right: 10px;
+}
+.Sidebar.open {
+  width: 60px;
+}
+.Sidebar.open .Sidebar-burgerClose {
+  display: none;
+}
+.Sidebar.open .Sidebar-burgerOpen {
+  display: block;
+}
+.Sidebar.open .Sidebar-logo,
+.Sidebar.open .Sidebar-searchForm,
+.Sidebar.open .Sidebar-navigationLink {
+  display: none;
+}
+
+.MainContent {
+  flex-grow: 1;
+  padding: 20px;
+  height: 100vh;
+}
+.MainContent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+.MainContent-header-titleArea {
+  flex-grow: 1;
+}
+.MainContent-header-titleArea-title {
+  font-size: 0.9em;
+  margin: 0;
+  color: #3498db;
+}
+.MainContent-header-titleArea-breadcrumb {
+  display: flex;
+  gap: 5px;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+.MainContent-header-titleArea-breadcrumbLink {
+  color: #3498db;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.MainContent-header-titleArea-breadcrumbLink:after {
+  content: ">";
+  margin-left: 10px;
+}
+.MainContent-header-titleArea-breadcrumbLink:last-child:after {
+  content: "";
+}
+.MainContent-header-loginArea {
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+.MainContent-header-loginArea-name, .MainContent-header-loginArea-role {
+  margin: 0;
+}
+.MainContent-header-loginArea .header-loginName {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+}
+.MainContent-header-loginArea .header-loginRole {
+  font-size: 0.875em;
+  margin: 0;
+  color: #666;
+}
+.MainContent-header-loginArea .header-userBox {
+  display: flex;
+  align-items: center;
+}
+.MainContent-header-loginArea .header-userBox .header-userAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.MainContent-header-loginArea .header-userBox .header-userLinks {
+  display: none; /* Or adjust according to your need */
+}
+.MainContent-header-loginArea .header-userBox .header-userLink {
+  color: #007bff;
+  text-decoration: none;
+}
+.MainContent .main-content-body {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /*a verifier si bon emplacement*/
+}
+.MainContent .main-content-body .statistics-diagram canvas {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+.MainContent .main-content-body .statistics, .MainContent .main-content-body .diagram, .MainContent .main-content-body .collaborators {
+  margin-bottom: 20px;
+}
+.MainContent .main-content-body .statistics-title, .MainContent .main-content-body .diagram-title, .MainContent .main-content-body .collaborators-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.MainContent .main-content-body .statistics .statistics-content, .MainContent .main-content-body .diagram .statistics-content, .MainContent .main-content-body .collaborators .statistics-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.MainContent .main-content-body .statistics .statistics-content .statistics-item, .MainContent .main-content-body .diagram .statistics-content .statistics-item, .MainContent .main-content-body .collaborators .statistics-content .statistics-item {
+  margin-right: 20px;
+}
+.MainContent .main-content-body .statistics .statistics-content .statistics-item .statistics-label, .MainContent .main-content-body .diagram .statistics-content .statistics-item .statistics-label, .MainContent .main-content-body .collaborators .statistics-content .statistics-item .statistics-label {
+  font-weight: bold;
+}
+.MainContent .main-content-body .statistics .statistics-content .statistics-item .statistics-value, .MainContent .main-content-body .diagram .statistics-content .statistics-item .statistics-value, .MainContent .main-content-body .collaborators .statistics-content .statistics-item .statistics-value {
+  font-size: 18px;
+  color: #2ecc71;
+}
+.MainContent .main-content-body .statistics .statistics-content .statistics-button, .MainContent .main-content-body .diagram .statistics-content .statistics-button, .MainContent .main-content-body .collaborators .statistics-content .statistics-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.MainContent .main-content-body .statistics .statistics-content .statistics-button:hover, .MainContent .main-content-body .diagram .statistics-content .statistics-button:hover, .MainContent .main-content-body .collaborators .statistics-content .statistics-button:hover {
+  background-color: #217dbb;
+}
+.MainContent .main-content-body .statistics .diagram-content canvas, .MainContent .main-content-body .diagram .diagram-content canvas, .MainContent .main-content-body .collaborators .diagram-content canvas {
+  width: 100%;
+  max-width: 600px;
+}
+.MainContent .main-content-body .statistics .collaborators-projet, .MainContent .main-content-body .diagram .collaborators-projet, .MainContent .main-content-body .collaborators .collaborators-projet {
+  display: flex;
+  justify-content: space-between; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+}
+.MainContent .main-content-body .statistics .collaborators-projet-title, .MainContent .main-content-body .diagram .collaborators-projet-title, .MainContent .main-content-body .collaborators .collaborators-projet-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.MainContent .main-content-body .statistics .collaborators-projet-assignButton, .MainContent .main-content-body .statistics .collaborators-projet-dissociateButton, .MainContent .main-content-body .diagram .collaborators-projet-assignButton, .MainContent .main-content-body .diagram .collaborators-projet-dissociateButton, .MainContent .main-content-body .collaborators .collaborators-projet-assignButton, .MainContent .main-content-body .collaborators .collaborators-projet-dissociateButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.MainContent .main-content-body .statistics .collaborators-projet-assignButton:hover, .MainContent .main-content-body .statistics .collaborators-projet-dissociateButton:hover, .MainContent .main-content-body .diagram .collaborators-projet-assignButton:hover, .MainContent .main-content-body .diagram .collaborators-projet-dissociateButton:hover, .MainContent .main-content-body .collaborators .collaborators-projet-assignButton:hover, .MainContent .main-content-body .collaborators .collaborators-projet-dissociateButton:hover {
+  background-color: #217dbb;
+}
+.MainContent .main-content-body .statistics .collaborators-assignButton, .MainContent .main-content-body .statistics .collaborators-dissociateButton, .MainContent .main-content-body .diagram .collaborators-assignButton, .MainContent .main-content-body .diagram .collaborators-dissociateButton, .MainContent .main-content-body .collaborators .collaborators-assignButton, .MainContent .main-content-body .collaborators .collaborators-dissociateButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.MainContent .main-content-body .statistics .collaborators-assignButton:hover, .MainContent .main-content-body .statistics .collaborators-dissociateButton:hover, .MainContent .main-content-body .diagram .collaborators-assignButton:hover, .MainContent .main-content-body .diagram .collaborators-dissociateButton:hover, .MainContent .main-content-body .collaborators .collaborators-assignButton:hover, .MainContent .main-content-body .collaborators .collaborators-dissociateButton:hover {
+  background-color: #217dbb;
+}
+.MainContent .main-content-body .statistics .collaborators-table, .MainContent .main-content-body .diagram .collaborators-table, .MainContent .main-content-body .collaborators .collaborators-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.MainContent .main-content-body .statistics .collaborators-table th,
+.MainContent .main-content-body .statistics .collaborators-table td, .MainContent .main-content-body .diagram .collaborators-table th,
+.MainContent .main-content-body .diagram .collaborators-table td, .MainContent .main-content-body .collaborators .collaborators-table th,
+.MainContent .main-content-body .collaborators .collaborators-table td {
+  padding: 10px;
+  text-align: left;
+}
+.MainContent .main-content-body .statistics .collaborators-table th, .MainContent .main-content-body .diagram .collaborators-table th, .MainContent .main-content-body .collaborators .collaborators-table th {
+  background-color: #3498db;
+  color: #fff;
+}
+.MainContent .main-content-body .statistics .collaborators-table tr, .MainContent .main-content-body .diagram .collaborators-table tr, .MainContent .main-content-body .collaborators .collaborators-table tr {
+  border-bottom: 1px solid #ddd;
+}
+.MainContent .main-content-body .statistics .collaborators-table input[type=checkbox], .MainContent .main-content-body .diagram .collaborators-table input[type=checkbox], .MainContent .main-content-body .collaborators .collaborators-table input[type=checkbox] {
+  margin: 0;
+}
+.MainContent .main-content-body .statistics .collaborators-tableRow button, .MainContent .main-content-body .diagram .collaborators-tableRow button, .MainContent .main-content-body .collaborators .collaborators-tableRow button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.MainContent .main-content-body .statistics .collaborators-tableRow button:hover, .MainContent .main-content-body .diagram .collaborators-tableRow button:hover, .MainContent .main-content-body .collaborators .collaborators-tableRow button:hover {
+  background-color: #0062cc;
+}
+
+@media (max-width: 768px) {
+  .Sidebar {
+    width: 60px;
+  }
+  .Sidebar .Sidebar-burgerOpen {
+    display: block;
+  }
+  .Sidebar .Sidebar-burgerClose {
+    display: none;
+  }
+  .Sidebar .Sidebar-logo, .Sidebar .Sidebar-searchForm, .Sidebar .Sidebar-navigationLink, .Sidebar .Sidebar-settingsLink {
+    display: none;
+  }
+  .MainContent-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .MainContent-header .header-titleArea, .MainContent-header .header-loginArea {
+    margin-bottom: 10px;
+  }
+  .MainContent-header .header-titleArea-breadcrumb {
+    flex-wrap: wrap;
+  }
+  .collaborators-tableRow button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .collaborators-tableRow button:hover {
+    background-color: #0062cc;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

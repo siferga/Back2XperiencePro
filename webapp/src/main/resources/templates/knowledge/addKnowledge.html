@@ -30,6 +30,8 @@
             <select class="form-control" id="projectId" name="projectId" required>
                 <option th:each="project : ${allProjects}" th:value="${project.id}" th:text="${project.label}"></option>
             </select>
+            <!-- Display an error message if there's an error loading projects -->
+            <div th:if="${errorMessage}" th:text="${errorMessage}"></div>
         </div>
 
         <button type="submit" class="btn btn-primary">Add Knowledge to project</button>

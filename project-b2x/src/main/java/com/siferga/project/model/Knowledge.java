@@ -20,7 +20,7 @@ public class Knowledge {
     private Long id;
     private String titre;
     private String description;
-//    private String collaborator;
+    private String collaborator;
     private String file;
     private Date date;
 

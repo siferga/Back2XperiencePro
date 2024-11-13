@@ -20,7 +20,7 @@ public class KnowledgeService {
 
     private final KnowledgeRepository knowledgeRepository;
 
-    public Knowledge saveKnowledge(MultipartFile knowledge, Long userId,Long projectId) throws Exception {
+    public Knowledge saveKnowledge(Long userId,Long projectId, MultipartFile knowledge) throws Exception {
         byte[] content = knowledge.getBytes();
 
         Knowledge knowledgeEntity = new Knowledge(
@@ -39,7 +39,7 @@ public class KnowledgeService {
             return ResponseEntity.ok()
                     .contentType(MediaType.parseMediaType(knowledge.getContentType()))
                     .header(HttpHeaders.CONTENT_DISPOSITION,"inline; filename=\"" + knowledge.getFileName() + "\"")
-                    .body(knowledge.getContent());
+                    .body(knowledge.getFile());
         }else {
             return ResponseEntity.notFound().build();
         }

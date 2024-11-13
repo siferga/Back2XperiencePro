@@ -8,27 +8,28 @@
 <body>
 <div class="container">
     <h1>Knowledge Details</h1>
-    <div th:action="@{/knowledgeDetails}" th:object="${knowledge}" method="post"></div>
+<!--    <div th:action="@{/knowledgeDetails}" th:object="${knowledge}" method="post"></div>-->
     <div class="card">
         <div class="card-body">
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">ID:</label>
-                <div class="col-sm-10">
-                    <span th:text="${knowledge.id}"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">File Name:</label>
-                <div class="col-sm-10">
-                    <span th:text="${knowledge.fileName}"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Content Type:</label>
-                <div class="col-sm-10">
-                    <span th:text="${knowledge.contentType}"></span>
-                </div>
-            </div>
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-2 col-form-label">ID:</label>-->
+<!--                <div class="col-sm-10">-->
+<!--                    <span th:text="${knowledge.id}"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-2 col-form-label">File Name:</label>-->
+<!--                <div class="col-sm-10">-->
+<!--                    <span th:text="${knowledge.fileName}"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-2 col-form-label">Content Type:</label>-->
+<!--                <div class="col-sm-10">-->
+<!--                    <span th:text="${knowledge.contentType}"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+            <embed th:src="@{'/findKnowledgeById/' + ${knowledgeId}}" type="application/pdf" width="100%" height="600px">
 
             <a th:href="@{/knowledgeList}" class="btn btn-primary">Back to list</a>
         </div>

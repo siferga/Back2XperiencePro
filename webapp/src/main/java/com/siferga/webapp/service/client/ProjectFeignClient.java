@@ -25,4 +25,7 @@ public interface ProjectFeignClient {
 
     @DeleteMapping(value = "/api/deleteProject",consumes = "application/json")
     public void deleteProject(@RequestParam("id") Long id);
+
+    @GetMapping(value = "/api/projectDetails/{id}",consumes = "application/json")
+    public String projectDetails(@PathVariable("id") Long id);
 }

@@ -32,12 +32,12 @@ public class KnowledgeController {
     }
 
     @PostMapping("/addKnowledge")
-    public ModelAndView addNewKnowledge(@RequestParam("file") MultipartFile file,
+    public String addNewKnowledge(@RequestPart("file") MultipartFile file,
                                         @RequestParam("projectId") Long projectId) {
         // Register the new knowledge
         Long userId = customUserDetailsService.actualUser().getId();
         knowledgeServiceImpl.registerKnowledge(userId, projectId, file);
-        return new ModelAndView("knowledge/knowledgeList");
+        return "redirect:/knowledgeList";
 
 //        // Redirect to the knowledge list or success page
 //        return new ModelAndView("redirect:/knowledgeList");
@@ -49,31 +49,30 @@ public class KnowledgeController {
     @GetMapping("/knowledgeList")
     public ModelAndView showKnowledgeList(Model model) {
         List<Knowledge> knowledges = knowledgeServiceImpl.findAllKnowledges();
-        return new ModelAndView("knowledge/knowledgeList", "knowledge", knowledges);
+        return new ModelAndView("knowledge/knowledgeList", "knowledges", knowledges);
     }
 
-    @PostMapping("/knowledgeList")
-    public ModelAndView showKnowledgeList(@ModelAttribute Knowledge knowledge) {
-        List<Knowledge> knowledges = knowledgeServiceImpl.findAllKnowledges();
-        ModelAndView modelAndView = new ModelAndView("knowledge/knowledgeList");
-        modelAndView.addObject("knowledges", knowledges);
-        modelAndView.addObject("knowledge", new Knowledge());
-        return modelAndView;
-    }
+//    @PostMapping("/knowledgeList")
+//    public ModelAndView showKnowledgeList(@ModelAttribute Knowledge knowledge) {
+//        List<Knowledge> knowledges = knowledgeServiceImpl.findAllKnowledges();
+//        ModelAndView modelAndView = new ModelAndView("knowledge/knowledgeList");
+//        modelAndView.addObject("knowledges", knowledges);
+//        modelAndView.addObject("knowledge", new Knowledge());
+//        return modelAndView;
+//    }
 
-    @GetMapping("/findAllKnowledge")
-    public ResponseEntity<List<Knowledge>> getAllKnowledge() {
-        List<Knowledge> knowledges = knowledgeServiceImpl.findAllKnowledges();
-        return ResponseEntity.ok(knowledges);
-    }
+//    @GetMapping("/findAllKnowledge")
+//    public ModelAndView getAllKnowledge() {
+//        List<Knowledge> knowledges = knowledgeServiceImpl.findAllKnowledges();
+//        return new ModelAndView("knowledge/knowledgeList", "knowledge", knowledges);
+//    }
 
     /***************************   FIND A KNOWLEDGE   ********************************/
 
-    @PostMapping("/findKnowledgeById")
-    public ResponseEntity<byte[]> getKnowledgeById(@RequestParam String id) {
+    @GetMapping ("/findKnowledgeById/{id}")
+    public ResponseEntity<byte[]> getKnowledgeById(@PathVariable String id) {
         return this.knowledgeServiceImpl.findKnowledgeById(id);
     }
-
 
     /*************************   DELETE A KNOWLEDGE  *****************************/
 
@@ -83,9 +82,9 @@ public class KnowledgeController {
     }
 
     @PostMapping("/deleteKnowledge/{id}")
-    public ModelAndView deleteKnowledge(@PathVariable("id") Long id) {
+    public String deleteKnowledge(@PathVariable("id") String id) {
         knowledgeServiceImpl.deleteKnowledge(String.valueOf(id));
-        return new ModelAndView("knowledge/knowledgeList");
+        return "redirect:/knowledgeList";
     }
 //    @PostMapping("/deleteKnowledge/{id}")
 //    public String deleteKnowledge(@PathVariable("id") Long id) {
@@ -94,13 +93,12 @@ public class KnowledgeController {
 
     /*************************   KNOWLEDGE DETAILS   *****************************/
     @GetMapping("/knowledgeDetails/{id}")
-    public String viewKnowledgeDetails(@PathVariable("id") String id, Model model) {
+    public ModelAndView viewKnowledgeDetails(@PathVariable("id") String id, Model model) {
         ResponseEntity<byte[]> knowledge = knowledgeServiceImpl.findKnowledgeById(id);
         if (knowledge != null) {
-            model.addAttribute("knowledge", knowledge);
-            return "knowledge/knowledgeDetails";  // Retourne la vue des détails du collaborateur
+            return new ModelAndView("knowledge/knowledgeDetails", "knowledgeId", id);
         }else {
-            return "redirect:knowledge/knowledgeList";
+           return new ModelAndView("redirect:/knowledgeList");
         }
     }
 }

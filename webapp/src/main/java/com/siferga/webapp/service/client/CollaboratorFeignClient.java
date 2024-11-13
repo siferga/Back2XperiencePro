@@ -3,7 +3,6 @@ package com.siferga.webapp.service.client;
 import com.siferga.webapp.model.Collaborator;
 import com.siferga.webapp.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

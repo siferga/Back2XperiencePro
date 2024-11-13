@@ -1,6 +1,7 @@
 package org.siferga.knowledge.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,16 +17,17 @@ public class Knowledge {
     private Long projectId;
     private String fileName;
     private String contentType;
+    @CreatedDate
     private Date date;
-    private byte[] content;
+    private byte[] file;
 
-    public Knowledge(Long userId, Long projectId,String fileName, String contentType, byte[] content) {
+    public Knowledge(Long userId, Long projectId,String fileName, String contentType, byte[] file) {
         this.userId = userId;
         this.projectId = projectId;
         this.fileName = fileName;
         this.contentType = contentType;
         this.date = new Date();
-        this.content = content;
+        this.file = file;
 
     }
 }

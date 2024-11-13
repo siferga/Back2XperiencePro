@@ -15,7 +15,7 @@ public interface KnowledgeFeignClient {
     @PostMapping(value = "/knowledge/addKnowledge", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> saveKnowledge(@RequestParam("userId") Long userId,
                                                 @RequestParam("projectId") Long projectId,
-                                                @RequestParam("file") MultipartFile file);
+                                                @RequestPart("file") MultipartFile file);
 
     @GetMapping(value = "/knowledge/allKnowledge",consumes = "application/json")
     public ResponseEntity<List<Knowledge>> getAllKnowledge();

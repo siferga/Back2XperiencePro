@@ -1,10 +1,10 @@
-package org.capaub.note;
+package org.siferga.knowledge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NoteApplicationTests {
+class KnowledgeApplicationTests {
 
     @Test
     void contextLoads() {

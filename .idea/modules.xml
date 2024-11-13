@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Back2XperiencePro.iml" filepath="$PROJECT_DIR$/.idea/Back2XperiencePro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-b2x/project-b2x.iml" filepath="$PROJECT_DIR$/project-b2x/project-b2x.iml" />
     </modules>
   </component>
 </project>

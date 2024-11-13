@@ -26,7 +26,7 @@
 <!--            <th>Knowledge Id</th>-->
             <th>File Name</th>
             <th>Content Type</th>
-            <th>Content</th>
+            <th>File</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -36,11 +36,10 @@
 <!--            <td th:text="${knowledge.projetId}"></td>-->
             <td th:text="${knowledge.fileName}"></td>
             <td th:text="${knowledge.contentType}"></td>
-            <td th:text="${knowledge.content}"></td>
+            <td th:text="${knowledge.file}"></td>
 
             <td>
                 <a th:href="@{/knowledgeDetails/{id}(id=${knowledge.id})}" class="btn btn-info btn-sm">View</a>
-                <a th:href="@{/updateKnowledge/{id}(id=${knowledge.id})}" class="btn btn-warning btn-sm">Edit</a>
 <!--                <a th:href="@{/deleteProject/{id}(id=${project.id})}" class="btn btn-danger btn-sm">Delete</a>-->
                 <!-- Delete Project (using form for POST request) -->
                 <form th:action="@{/deleteKnowledge/{id}(id=${knowledge.id})}" method="post" style="display:inline;">

@@ -27,17 +27,10 @@ public class KnowledgeController {
     @PostMapping("/addKnowledge")
     public ResponseEntity<Knowledge> addKnowledge(@RequestParam("userId") Long userId,
                                                   @RequestParam("projectId") Long projectId,
-                                                  @RequestParam("file") MultipartFile file) throws Exception {
+                                                  @RequestPart("file") MultipartFile file) throws Exception {
         Knowledge knowledge = knowledgeService.saveKnowledge(userId, projectId, file);
         return ResponseEntity.ok(knowledge);
     }
-
-//    //Upload knowledge
-//    @PostMapping("/saveKnowledge")
-//    public ResponseEntity<String> saveKnowledge(@RequestParam("knowledge") MultipartFile knowledge, @RequestParam("userId") Long userId, @RequestParam("projectId") Long projectId) throws Exception {
-//        Knowledge saveKnowledge = knowledgeService.saveKnowledge(knowledge, userId, projectId);
-//        return ResponseEntity.ok("document sauvegardé");
-//    }
 
     // List of knowledges
     @GetMapping("/allKnowledge")

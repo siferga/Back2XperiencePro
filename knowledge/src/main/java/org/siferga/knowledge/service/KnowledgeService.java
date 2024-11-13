@@ -37,6 +37,8 @@ public class KnowledgeService {
         Knowledge knowledge = knowledgeRepository.findById(knowledgeId).orElse(null);
         if (knowledge != null) {
             return ResponseEntity.ok()
+//                    .header("Access-Control-Allow-Origin", "http://localhost:9010")
+                    .header("X-Frame-Options", "ALLOW-FROM http://localhost:9010")
                     .contentType(MediaType.parseMediaType(knowledge.getContentType()))
                     .header(HttpHeaders.CONTENT_DISPOSITION,"inline; filename=\"" + knowledge.getFileName() + "\"")
                     .body(knowledge.getFile());

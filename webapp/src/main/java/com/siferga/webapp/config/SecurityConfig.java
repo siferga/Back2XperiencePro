@@ -38,11 +38,16 @@ public class SecurityConfig {
 
                         // Tout autre accès nécessite une authentification
                         .anyRequest().authenticated()) // Other pages need authentification
+
                 .formLogin(form -> form.loginPage("/login")
                         .usernameParameter("email")
                         .defaultSuccessUrl("/", true)
                         .permitAll())
-                .logout(LogoutConfigurer::permitAll);
+                .logout(LogoutConfigurer::permitAll) ;
+
+                http.headers(headers -> headers
+                        .frameOptions(frameOptions -> frameOptions
+                        .sameOrigin())); // Permet aux iframes de même origine uniquement
         return http.build();
     }
 

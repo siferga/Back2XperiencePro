@@ -29,7 +29,7 @@
 <!--                    <span th:text="${knowledge.contentType}"></span>-->
 <!--                </div>-->
 <!--            </div>-->
-            <embed th:src="@{'/findKnowledgeById/' + ${knowledgeId}}" type="application/pdf" width="100%" height="600px">
+            <embed th:src="@{'/findKnowledgeById/' + ${knowledgeId}}" type="application/pdf" width="100%" height="300px">
 
             <a th:href="@{/knowledgeList}" class="btn btn-primary">Back to list</a>
         </div>
